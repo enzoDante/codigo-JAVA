@@ -34,7 +34,7 @@ public class Projeto1B{
                         if(Integer.parseInt(args[i1]) == 2) 
                                 totalMulheres++;
                         else totalHomens++;
-                        //fazer media de homens e mulheres!
+                        //fazer media de homens e mulheres!===========================
 
                         
                         //procedencia
