@@ -1,3 +1,14 @@
+/* *******************************************************************
+ * Colegio Tecnico Antonio Teixeira Fernandes (Univap)
+ * Curso Tecnico em Informatica - Data de Entrega: DD/MM/2020
+ * Autores do Projeto: Enzo Dante Micoli
+ *                     Davi
+ * Turma: 3H  Disciplina: Programacao - II
+ * Avaliacao parcial referente ao 1 - Bimestre
+ * Observacao: 
+ * 
+ * nome_arquivo.java
+ * ******************************************************************/
 public class Projeto1Bpt2{
 
     public static void main(String args[]){
@@ -15,7 +26,7 @@ public class Projeto1Bpt2{
                 }
                 //calculando x: (total pessoas - x) / total de grupos
                 x = (Double.parseDouble(args[indiceTotal]) - x) / Integer.parseInt(args[indiceG]);
-                
+
     
                 //inserindo na equação do grupo, porem temos x
                 for(int z = 1; z <= Integer.parseInt(args[indiceG]); z++){
