@@ -54,8 +54,15 @@ public class ClasseOpcoes{
 	}
 	public void relatar(){
 		this.classificarCandidatas();
+		int colocacao =  1;
 		for(int i = 0; i < this.getContCandidatas(); i++){
-			System.out.printf("[%d] - nota [%1.1f] ", i+1, this.getCandidataNota(i));
+			
+			if(i > 0 && this.getCandidataNota(i) != this.getCandidataNota(i-1)){
+				colocacao++;
+				System.out.printf(" %1.1f  e %1.1f\n", this.getCandidataNota(i), this.getCandidataNota(i-1));
+			}
+			System.out.printf("[%d]\n", colocacao);
+			System.out.printf("[%d] - nota [%1.1f] ", colocacao, this.getCandidataNota(i));
 			System.out.printf("%s Simpatia[%1.1f] Elegancia[%1.1f] Beleza[%1.1f]\n", this.getCandidataNome(i), this.getCandidataSimpatia(i), this.getCandidataElegancia(i), this.getCandidataBeleza(i));
 		}
 	}
