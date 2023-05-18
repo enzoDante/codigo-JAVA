@@ -46,7 +46,7 @@ public class Projeto2bi{
 						
 						if(consulta >= 0 && consulta <= escolhas.getContCandidatas()){
 							candidata = escolhas.getCandidata(consulta);
-							System.out.printf("Nome: %s Simpatia: %1.1f Elegancia: %1.1f Beleza: %1.1f\n", candidata.getNome(), candidata.getSimpatia(), candidata.getElegancia(), candidata.getBeleza());
+							System.out.printf("Nome: [%s] Simpatia: [%1.1f] Elegancia: [%1.1f] Beleza: [%1.1f] - Nota: [%1.1f]\n", candidata.getNome(), candidata.getSimpatia(), candidata.getElegancia(), candidata.getBeleza(), candidata.getNota());
 
 						}else
 							System.out.println("Nao existe esse registro");	
