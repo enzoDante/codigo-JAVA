@@ -56,15 +56,18 @@ public class ClasseOpcoes{
 		this.classificarCandidatas();
 		int colocacao =  1;
 		for(int i = 0; i < this.getContCandidatas(); i++){
-			
-			if(i > 0 && this.getCandidataNota(i) != this.getCandidataNota(i-1)){
-				colocacao++;
-				System.out.printf(" %1.1f  e %1.1f\n", this.getCandidataNota(i), this.getCandidataNota(i-1));
+
+			if(i > 0){
+				Float nt2 = this.getCandidataNota(i-1) - this.getCandidataNota(i);
+				
+				if(nt2 != 0){
+					colocacao++;
+				}
 			}
-			System.out.printf("[%d]\n", colocacao);
-			System.out.printf("[%d] - nota [%1.1f] ", colocacao, this.getCandidataNota(i));
-			System.out.printf("%s Simpatia[%1.1f] Elegancia[%1.1f] Beleza[%1.1f]\n", this.getCandidataNome(i), this.getCandidataSimpatia(i), this.getCandidataElegancia(i), this.getCandidataBeleza(i));
+			System.out.printf("[%dº] - nota: [%1.1f] Candidata: %s\n", colocacao, this.getCandidataNota(i), this.getCandidataNome(i));
+			System.out.printf("Simpatia[%1.1f] Elegancia[%1.1f] Beleza[%1.1f]\n\n", this.getCandidataSimpatia(i), this.getCandidataElegancia(i), this.getCandidataBeleza(i));
 		}
+		System.out.println("");
 	}
 	
 	//===============GET=========================
