@@ -90,6 +90,21 @@ public class Projeto2bi{
 
 						}else
 							System.out.println("Nao existe esse registro");
+					//=================================================================
+					}else if(opcao == 4){
+						escolhas.getCandidatasNome();
+						System.out.println("\nDigite o id da candidata que deseja excluir:");
+						consulta = Integer.parseInt(scan.nextLine());						
+						
+						if(consulta >= 0 && consulta <= escolhas.getContCandidatas()){
+							//candidata = escolhas.getCandidata(consulta);
+							escolhas.removerCandidata(consulta);
+
+						}else
+							System.out.println("Nao existe esse registro");	
+					//=================================================================
+					}else{
+						escolhas.relatar();
 					}
 				}else{
 					System.out.println("Nao existe candidatas cadastradas");
@@ -101,7 +116,8 @@ public class Projeto2bi{
 				if(escolha != 1)
 					break;
 				
-			}
+			}else
+				break;
 			
 			//escolhas.InserirCandidata();
 		}

@@ -20,17 +20,44 @@ public class ClasseOpcoes{
 		this.contCandidatas = value;
 	}
 	public void setCandidataNome(int i, String nome){
-		//ClasseCandidatas candidata = this.getCandidata(i);
 		this.candidatas[i].setNome(nome);
 	}
 	public void setCandidataSimpatia(int i, Float simpatia){
 		this.candidatas[i].setSimpatia(simpatia);
+		this.candidatas[i].calcularNota();
 	}
 	public void setCandidataElegancia(int i, Float elegancia){
 		this.candidatas[i].setElegancia(elegancia);
+		this.candidatas[i].calcularNota();
 	}
 	public void setCandidataBeleza(int i, Float beleza){
 		this.candidatas[i].setBeleza(beleza);
+		this.candidatas[i].calcularNota();
+	}
+
+	public void removerCandidata(int i){
+		for(int l = i; l < this.getContCandidatas(); l++){
+			this.candidatas[l] = getCandidata(l + 1);
+		}
+		setContCandidatas(getContCandidatas()-1);
+	}
+	public void classificarCandidatas(){
+		for(int i = 0; i < this.getContCandidatas(); i++){
+			for(int l = 0; l < this.getContCandidatas()-1; l++){
+				if(this.getCandidataNota(l) < this.getCandidataNota(l+1)){
+					ClasseCandidatas aux = getCandidata(l);
+					this.candidatas[l] = getCandidata(l + 1);
+					this.candidatas[l+1] = aux;
+				}
+			}
+		}
+	}
+	public void relatar(){
+		this.classificarCandidatas();
+		for(int i = 0; i < this.getContCandidatas(); i++){
+			System.out.printf("[%d] - nota [%1.1f] ", i+1, this.getCandidataNota(i));
+			System.out.printf("%s Simpatia[%1.1f] Elegancia[%1.1f] Beleza[%1.1f]\n", this.getCandidataNome(i), this.getCandidataSimpatia(i), this.getCandidataElegancia(i), this.getCandidataBeleza(i));
+		}
 	}
 	
 	//===============GET=========================
@@ -55,6 +82,9 @@ public class ClasseOpcoes{
 	}
 	public Float getCandidataBeleza(int i){
 		return this.candidatas[i].getBeleza();
+	}
+	public Float getCandidataNota(int i){
+		return this.candidatas[i].getNota();
 	}
 
 	public int getContCandidatas(){
