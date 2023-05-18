@@ -8,7 +8,7 @@ public class ClasseCandidatas{
 		this.setNome(nome);
 		this.setSimpatia(simpatia);
 		this.setElegancia(elegancia);
-		this.setSimpatia(beleza);
+		this.setBeleza(beleza);
 	}
 
 	public void setNome(String value){
