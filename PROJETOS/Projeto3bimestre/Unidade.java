@@ -9,7 +9,9 @@ public class Unidade {
             this.setUnidade(this.UnidadeExtenso(num));
         else{
             this.dezes = new Dezena(num);//num
-            System.out.println(this.dezes.getDezenas(num));//Integer.toString(num)
+            //System.out.println(this.dezes.getDezenas(num));//Integer.toString(num)
+            //this.dezes.getDezena();
+            System.out.println(this.dezes.getDezena());
         }
     }
     public String UnidadeExtenso(int num){

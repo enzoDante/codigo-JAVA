@@ -12,6 +12,7 @@ public class NumeroExtenso{
 		}while(num < 0 || num > 9999);
 		//System.out.println("Boaaa meu chapa!");
 		Unidade unidad = new Unidade(num);
-		unidad.getExtenso();
+		//if(num < 20)
+			unidad.getExtenso();
 	}
 }
