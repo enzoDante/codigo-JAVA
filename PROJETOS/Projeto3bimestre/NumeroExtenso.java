@@ -10,7 +10,7 @@ public class NumeroExtenso{
 			num = Integer.parseInt(scan.nextLine());
 
 		}while(num < 0 || num > 9999);
-		System.out.println("Boaaa meu chapa!");
+		//System.out.println("Boaaa meu chapa!");
 		Unidade unidad = new Unidade(num);
 		unidad.getExtenso();
 	}

@@ -7,13 +7,13 @@ public class Unidade {
     public Unidade(int num){
         if(num < 20)
             this.setUnidade(this.UnidadeExtenso(num));
-        else
-            this.dezes = new Dezena(num);
+        else{
+            this.dezes = new Dezena(num);//num
+            System.out.println(this.dezes.getDezenas(num));//Integer.toString(num)
+        }
     }
     public String UnidadeExtenso(int num){
-        /*for(int i = 0; i < this.Unidades.length(); i++){
-            System.out.println(Unidades[i]);
-        }*/
+
         return this.Unidades[num];
     }
 
