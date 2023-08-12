@@ -12,6 +12,7 @@ public class Dezena {//extends Unidade
         }
         else if(num < 1000){
             cent = new Centena(num);
+            this.setDezena(cent.getCentena());
         }
         //System.out.println("teste "+num);//+num
     }

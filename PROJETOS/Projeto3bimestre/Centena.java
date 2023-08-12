@@ -4,7 +4,8 @@ public class Centena {// extends Dezena
     private Dezena deze;
 
     public Centena(int num){
-        System.out.println(getCentenas(num));
+        //System.out.println(getCentenas(num));
+        this.setCentena(this.getCentenas(num));
     }
 
     public String getCentenas(int num){
