@@ -3,6 +3,7 @@ public class Dezena {//extends Unidade
     private String[] dezenas = {"", "", "vinte", "trinta", "quarenta", "cinquenta", "sessenta", "setenta", "oitenta", "noventa"};
     private Unidade uni;
     private Centena cent;
+    private Milhar milh;
 
     public Dezena(int num){//int num
         //super(num);
@@ -13,6 +14,9 @@ public class Dezena {//extends Unidade
         else if(num < 1000){
             cent = new Centena(num);
             this.setDezena(cent.getCentena());
+        }else{
+            milh = new Milhar(num);
+            this.setDezena(milh.getMilhar());
         }
         //System.out.println("teste "+num);//+num
     }
