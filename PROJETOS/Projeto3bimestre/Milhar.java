@@ -3,10 +3,10 @@ public class Milhar extends Dezena {
     private String[] Milhares = {"", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove"};
     private String CentsDezes = "";
 
-    public Milhar(){
+    /*public Milhar(){
         super();//num%1000
         //setMilhar(getMilhares(num));
-    }
+    }*/
     public void setMilharExtenso(int value){
         this.milhar = this.getMilhares(value);
     }

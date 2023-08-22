@@ -2,11 +2,11 @@ public class Centena extends Dezena {// extends Dezena
     private String centena = "";
     private String[] centenas = {"", "cento", "duzentos", "trezentos", "quatrocentos", "quinhentos", "seiscentos", "setecentos", "oitocentos", "novecentos"};
 
-    public Centena(){
+    /*public Centena(){
         super();
         //super(num%100);
         //this.setCentena(this.getCentenas(num));
-    }
+    }*/
 
     public void setCentenaExtenso(int value){
         this.centena = this.getCentenas(value);
