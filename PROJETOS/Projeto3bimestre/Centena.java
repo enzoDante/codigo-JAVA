@@ -1,17 +1,24 @@
-public class Centena {// extends Dezena
+public class Centena extends Dezena {// extends Dezena
     private String centena = "";
     private String[] centenas = {"", "cento", "duzentos", "trezentos", "quatrocentos", "quinhentos", "seiscentos", "setecentos", "oitocentos", "novecentos"};
-    private Dezena deze;
 
-    public Centena(int num){
-        //System.out.println(getCentenas(num));
-        this.setCentena(this.getCentenas(num));
+    public Centena(){
+        super();
+        //super(num%100);
+        //this.setCentena(this.getCentenas(num));
     }
 
+    public void setCentenaExtenso(int value){
+        this.centena = this.getCentenas(value);
+    }
     public String getCentenas(int num){
 
-        deze = new Dezena(num%100);
-        return this.centenas[(int)num/100] + ((num%100 != 0 && num%100 > 19) ? " e ": "")+ deze.getDezenas(num%100);
+        if(num%100 != 0)
+            this.setDezenaExtenso(num%100);
+
+        return this.centenas[(int)num/100] + ((num%100 != 0 && num%100 > 19) ? " e ": "")+ this.getDezena();
+        //deze = new Dezena(num%100);
+        //return this.centenas[(int)num/100] + ((num%100 != 0 && num%100 > 19) ? " e ": "")+ this.getDezenas(num%100);
     }
 
     public void setCentena(String value){

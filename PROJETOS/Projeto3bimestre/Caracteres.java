@@ -9,7 +9,8 @@ class Caracteres{
         return this.valorExtenso;
     }
     public void setExtensFormat(String value){
-        //String caractereM = value.charAt(0);
+        //char caractereM2 = Character.toUpperCase(value.charAt(0));
+        
         String caractereM = value.substring(0, 1);
         caractereM = caractereM.toUpperCase();
         this.valorExtenso = caractereM + value.substring(1, value.length());
