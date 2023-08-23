@@ -6,7 +6,7 @@ public class NumeroExtenso{
 		
 		int num = 0;
 		do{
-			System.out.println("Digite um numero entre 0 e 9999:");
+			//System.out.println("Digite um numero entre 0 e 9999:");
 			num = Integer.parseInt(scan.nextLine());
 
 		}while(num < 0 || num > 9999);
