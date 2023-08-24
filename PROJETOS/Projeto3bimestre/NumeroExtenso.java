@@ -10,8 +10,10 @@ public class NumeroExtenso{
 			num = Integer.parseInt(scan.nextLine());
 
 		}while(num < 0 || num > 9999);
-		String numeroextenso = "";
-		if(num < 20){
+		ControleAlgarism  controler = new ControleAlgarism(num);
+		String numeroextenso = controler.getNumerExtenso();
+		//String numeroextenso = "";
+		/*if(num < 20){
 			Unidade unidad = new Unidade();
 			unidad.setUnidadeExtenso(num);
 			numeroextenso = unidad.getUnidade();
@@ -27,7 +29,7 @@ public class NumeroExtenso{
 			Milhar milh = new Milhar();
 			milh.setMilharExtenso(num);
 			numeroextenso = milh.getMilhar();
-		}
+		}*/
 		Caracteres FormatarExtenso = new Caracteres(numeroextenso);
 		//Unidade unidad = new Unidade(num);
 		//Caracteres FormatarExtenso = new Caracteres(unidad.getUnidade());

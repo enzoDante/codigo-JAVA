@@ -18,13 +18,20 @@ public class Dezena extends Unidade {//extends Unidade
     //     }*/
     // }
     public void setDezenaExtenso(int value){
+        String resu = "";
         this.dezena = this.getDezenas(value);
+        //resu = this.UnidadeExtenso(value);
     }
     public String getDezenas(int num){
         //int n = num-(((int)num/10)*10);
         //uni = new Unidade(num%10);
-        if(num%10 != 0)
-            this.setUnidadeExtenso(num%10);
+        int verificar = 0;
+        if(num < 20)
+            verificar = num;
+        else
+            verificar = num%10;
+        //if(num < 20)//num%10 != 0 && 
+        this.setUnidadeExtenso(verificar);
 
         return this.dezenas[(int)num/10] + (num%10 != 0 ? " e "+this.getUnidade(): "");
     }
