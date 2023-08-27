@@ -22,7 +22,7 @@ public class Milhar extends Centena {
         // }
         
 
-        return this.Milhares[(int)num/1000]+" mil" + (num%1000 != 0 && (num%1000 > 99 || num%1000 > 19)? " e ": "")+ this.getCentena();
+        return this.Milhares[(int)num/1000]+" mil" + (num%1000 != 0 && (num%1000 > 99 /*|| num%1000 > 19*/)? " e ": "")+ this.getCentena();
         //return this.Milhares[(int)num/1000]+" mil" + (num%1000 != 0 && (num%1000 > 99 || num%1000 > 19)? " e ": "")+ deze.getDezena();
     }
     // public void setCentsDezes(String value){
