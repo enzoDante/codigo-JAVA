@@ -33,7 +33,7 @@ public class Dezena extends Unidade {//extends Unidade
         //if(num < 20)//num%10 != 0 && 
         this.setUnidadeExtenso(verificar);
 
-        return this.dezenas[(int)num/10] + (num%10 != 0 ? " e "+this.getUnidade(): "");
+        return this.dezenas[(int)num/10] + (num%10 != 0 || num == 10? " e "+this.getUnidade(): "");
     }
     public void setDezena(String value){
         this.dezena = value;
