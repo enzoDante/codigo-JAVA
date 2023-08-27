@@ -1,7 +1,7 @@
-public class Milhar extends Dezena {
+public class Milhar extends Centena {
     private String milhar = "";
     private String[] Milhares = {"", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove"};
-    private String CentsDezes = "";
+    //private String CentsDezes = "";
 
     /*public Milhar(){
         super();//num%1000
@@ -12,25 +12,25 @@ public class Milhar extends Dezena {
     }
     public String getMilhares(int num){
         //deze = new Dezena(num%1000);
-        Centena cents = new Centena();
-        if(num%1000 != 0 && num%1000 > 99){
-            cents.setCentenaExtenso(num%1000);
-            setCentsDezes(cents.getCentena());
-        }else{
-            this.setDezenaExtenso(num%1000);
-            this.setCentsDezes(this.getDezena());
-        }
+        //Centena cents = new Centena();
+        //if(num%1000 != 0 && num%1000 > 99){
+            this.setCentenaExtenso(num%1000);
+            //this.setCentsDezes(this.getCentena());
+        // }else{
+        //     this.setDezenaExtenso(num%1000);
+        //     this.setCentsDezes(this.getDezena());
+        // }
         
 
-        return this.Milhares[(int)num/1000]+" mil" + (num%1000 != 0 && (num%1000 > 99 || num%1000 > 19)? " e ": "")+ this.getCentsDezes();
+        return this.Milhares[(int)num/1000]+" mil" + (num%1000 != 0 && (num%1000 > 99 || num%1000 > 19)? " e ": "")+ this.getCentena();
         //return this.Milhares[(int)num/1000]+" mil" + (num%1000 != 0 && (num%1000 > 99 || num%1000 > 19)? " e ": "")+ deze.getDezena();
     }
-    public void setCentsDezes(String value){
-        this.CentsDezes = value;
-    }
-    public String getCentsDezes(){
-        return this.CentsDezes;
-    }
+    // public void setCentsDezes(String value){
+    //     this.CentsDezes = value;
+    // }
+    // public String getCentsDezes(){
+    //     return this.CentsDezes;
+    // }
 
 
     public void setMilhar(String value){
