@@ -2,11 +2,6 @@ public class Unidade {
     private String unidade = "";
     private String[] Unidades = {"zero", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove"};
 
-    // public Unidade(){//int num
-    //     //if(num < 20)
-    //         //this.setUnidade(this.UnidadeExtenso(num));
-    // }
-    //aq===================================
     public void setUnidadeExtenso(int value){
         this.unidade = this.Unidades[value];
     }

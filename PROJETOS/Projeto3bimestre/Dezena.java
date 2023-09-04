@@ -6,7 +6,6 @@ public class Dezena extends Unidade {
     public void setDezenaExtenso(int value){
         String resu = "";
         this.dezena = this.getDezenas(value);
-        //resu = this.UnidadeExtenso(value);
     }
     public String getDezenas(int num){
         //int n = num-(((int)num/10)*10);
@@ -16,7 +15,7 @@ public class Dezena extends Unidade {
             verificar = num;
         else
             verificar = num%10;
-        //if(num < 20)//num%10 != 0 && 
+            
         this.setUnidadeExtenso(verificar);
 
         String Dezena = num >= 20? this.dezenas[(int)num/10] : num>=10 ? this.dezenasDez[num%10] : "";
