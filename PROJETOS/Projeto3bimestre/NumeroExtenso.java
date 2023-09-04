@@ -12,24 +12,6 @@ public class NumeroExtenso{
 		}while(num < 0 || num > 9999);
 		ControleAlgarism  controler = new ControleAlgarism(num);
 		String numeroextenso = controler.getNumerExtenso();
-		//String numeroextenso = "";
-		/*if(num < 20){
-			Unidade unidad = new Unidade();
-			unidad.setUnidadeExtenso(num);
-			numeroextenso = unidad.getUnidade();
-		}else if(num < 100){
-			Dezena dezes = new Dezena();
-			dezes.setDezenaExtenso(num);
-			numeroextenso = dezes.getDezena();
-		}else if(num < 1000){
-			Centena cents = new Centena();
-			cents.setCentenaExtenso(num);
-			numeroextenso = cents.getCentena();
-		}else{
-			Milhar milh = new Milhar();
-			milh.setMilharExtenso(num);
-			numeroextenso = milh.getMilhar();
-		}*/
 		Caracteres FormatarExtenso = new Caracteres(numeroextenso);
 		//Unidade unidad = new Unidade(num);
 		//Caracteres FormatarExtenso = new Caracteres(unidad.getUnidade());
