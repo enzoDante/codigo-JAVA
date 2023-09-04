@@ -2,7 +2,7 @@ import java.awt.*;
 public class Atividade8 extends Frame{
 	Panel p1;
 	Panel p2;
-	// Panel p3;
+	Panel p3;
 	Label labe1;
 	Label labe2;
 	TextField text1;
@@ -10,9 +10,9 @@ public class Atividade8 extends Frame{
 	public Atividade8(){
 		p1 = new Panel();
 		p2 = new Panel();
-		// p3 = new Panel();
+		p3 = new Panel();
 		labe1 = new Label("Digite um número entre 0 e 9999: ");
-		labe2 = new Label(" ");
+		labe2 = new Label("============================================");
 		text1 = new TextField(30);
 
 		btn1 = new Button("Extenso");
@@ -23,8 +23,9 @@ public class Atividade8 extends Frame{
 
 		add("South", p2);
 		p2.add(btn1);
-		// add("center", p3);
-		// p3.add(labe2);
+
+		add("Center", p3);
+		p3.add(labe2);
 
 		reshape(100, 100, 500, 300);
 		show();
@@ -35,7 +36,7 @@ public class Atividade8 extends Frame{
 			ControleAlgarism ctrl = new ControleAlgarism(num);
 			Caracteres FormatarExtenso = new Caracteres(ctrl.getNumerExtenso());
 			String valorExtenso = FormatarExtenso.getValor();
-			text1.setText(valorExtenso);
+			labe2.setText(valorExtenso);
 		}
 
 		return true;
