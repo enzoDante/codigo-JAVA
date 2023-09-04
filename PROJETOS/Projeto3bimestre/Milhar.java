@@ -1,12 +1,7 @@
 public class Milhar extends Centena {
     private String milhar = "";
-    private String[] Milhares = {"", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove"};
-    //private String CentsDezes = "";
-
-    /*public Milhar(){
-        super();//num%1000
-        //setMilhar(getMilhares(num));
-    }*/
+    //private String[] Milhares = {"", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove"};
+    
     public void setMilharExtenso(int value){
         this.milhar = this.getMilhares(value);
     }
@@ -20,17 +15,13 @@ public class Milhar extends Centena {
         //     this.setDezenaExtenso(num%1000);
         //     this.setCentsDezes(this.getDezena());
         // }
-        
+        String MilharUnidade = this.UnidadeExtenso((int)num/1000);
 
-        return this.Milhares[(int)num/1000]+" mil" + (num%1000 != 0 && (num%1000 > 99 /*|| num%1000 > 19*/)? " e ": "")+ this.getCentena();
+        return (num>=1000? MilharUnidade+" mil" :"")+(num>=1000 && num%1000 != 0? " e ": "") + this.getCentena();
+        //                                                                      && (num%1000 > 99)
+        //return (num>=1000? MilharUnidade+" mil" :"")+ (num%1000 != 0 && (num%1000 > 99)? " e ": "")+ this.getCentena();
         //return this.Milhares[(int)num/1000]+" mil" + (num%1000 != 0 && (num%1000 > 99 || num%1000 > 19)? " e ": "")+ deze.getDezena();
     }
-    // public void setCentsDezes(String value){
-    //     this.CentsDezes = value;
-    // }
-    // public String getCentsDezes(){
-    //     return this.CentsDezes;
-    // }
 
 
     public void setMilhar(String value){

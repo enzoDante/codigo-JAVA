@@ -1,6 +1,6 @@
 public class Unidade {
     private String unidade = "";
-    private String[] Unidades = {"zero", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove", "dez", "onze", "doze", "treze", "catorze", "quinze", "dezesseis", "dezessete", "dezoito", "dezenove"};
+    private String[] Unidades = {"zero", "um", "dois", "três", "quatro", "cinco", "seis", "sete", "oito", "nove"};
 
     // public Unidade(){//int num
     //     //if(num < 20)

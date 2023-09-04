@@ -1,22 +1,8 @@
-public class Dezena extends Unidade {//extends Unidade
+public class Dezena extends Unidade {
     private String dezena = "";
+    private String[] dezenasDez = {"dez", "onze", "doze", "treze", "catorze", "quinze", "dezesseis", "dezessete", "dezoito", "dezenove"};
     private String[] dezenas = {"", "", "vinte", "trinta", "quarenta", "cinquenta", "sessenta", "setenta", "oitenta", "noventa"};
 
-    // public Dezena(){//int num
-    //     super();
-    //     //super(num%10);
-    //     //if(num < 100)
-    //         //this.setDezena(this.getDezenas(num));
-            
-    //     /*
-    //     else if(num < 1000){
-    //         cent = new Centena(num);
-    //         this.setDezena(cent.getCentena());
-    //     }else{
-    //         milh = new Milhar(num);
-    //         this.setDezena(milh.getMilhar());
-    //     }*/
-    // }
     public void setDezenaExtenso(int value){
         String resu = "";
         this.dezena = this.getDezenas(value);
@@ -26,14 +12,16 @@ public class Dezena extends Unidade {//extends Unidade
         //int n = num-(((int)num/10)*10);
         //uni = new Unidade(num%10);
         int verificar = 0;
-        if(num < 20)
+        if(num < 10)
             verificar = num;
         else
             verificar = num%10;
         //if(num < 20)//num%10 != 0 && 
         this.setUnidadeExtenso(verificar);
 
-        return this.dezenas[(int)num/10] + (num%10 != 0 || num == 10? " e "+this.getUnidade(): "");
+        String Dezena = num >= 20? this.dezenas[(int)num/10] : num>=10 ? this.dezenasDez[num%10] : "";
+
+        return Dezena + (num%10 != 0 && num > 20? " e ": "")+((num > 20 && num%10 != 0) || num < 10?this.getUnidade(): "");
     }
     public void setDezena(String value){
         this.dezena = value;

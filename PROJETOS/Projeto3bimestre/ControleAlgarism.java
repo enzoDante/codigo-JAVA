@@ -1,5 +1,6 @@
 public class ControleAlgarism {
     private String numeroExtenso = "";
+	private Caracteres formatacao;
 
     public ControleAlgarism(int num){
         this.setExtenso(num);
@@ -12,7 +13,7 @@ public class ControleAlgarism {
     }
     public void setExtenso(int num){
         String resultado = "";
-        if(num < 20){
+        /*if(num < 20){
 			Unidade unidad = new Unidade();
 			unidad.setUnidadeExtenso(num);
 			resultado = unidad.getUnidade();
@@ -25,12 +26,16 @@ public class ControleAlgarism {
 			cents.setCentenaExtenso(num);
 			resultado = cents.getCentena();
 		}else{
-			Milhar milh = new Milhar();
-			milh.setMilharExtenso(num);
-			resultado = milh.getMilhar();
-		}
+		}*/
+		Milhar milh = new Milhar();
+		milh.setMilharExtenso(num);
+		resultado = milh.getMilhar();
         this.setNumeroExtenso(resultado);
     }
+	public void setFormatExtenso(String value){
+		formatacao = new Caracteres(value);
+		this.setNumeroExtenso(formatacao.getValor());
+	}
 
 
 }

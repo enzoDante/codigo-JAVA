@@ -12,12 +12,11 @@ public class Centena extends Dezena {// extends Dezena
         this.centena = this.getCentenas(value);
     }
     public String getCentenas(int num){
-
         if(num%100 != 0)
             this.setDezenaExtenso(num%100);
 
-        return this.centenas[(int)num/100] + ((num%100 != 0 && num%100 > 19) ? " e ": "")+ this.getDezena();
-        //deze = new Dezena(num%100);
+        return this.centenas[(int)num/100] + ((num%100 != 0 && num >= 100) ? " e ": "")+ this.getDezena();
+        //deze = new Dezena(num%100);                num%100 >= 10
         //return this.centenas[(int)num/100] + ((num%100 != 0 && num%100 > 19) ? " e ": "")+ this.getDezenas(num%100);
     }
 
