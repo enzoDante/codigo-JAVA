@@ -45,8 +45,9 @@ public class Atividade8 extends Frame{
 		if("Extenso".equals(ob)){
 			int num = Integer.parseInt(text1.getText());
 			ControleAlgarism ctrl = new ControleAlgarism(num);
-			Caracteres FormatarExtenso = new Caracteres(ctrl.getNumerExtenso());
-			String valorExtenso = FormatarExtenso.getValor();
+			//Caracteres FormatarExtenso = new Caracteres(ctrl.getNumerExtenso());
+			//String valorExtenso = FormatarExtenso.getValor();
+			String valorExtenso = ctrl.getNumerExtenso();
 			labe2.setText(valorExtenso);
 		}
 
