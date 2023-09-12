@@ -4,16 +4,14 @@
  * Autores do Projeto: Enzo Dante Mícoli
  * Turma: 3H  Disciplina: Programação - II
  * Avaliação parcial referente ao 1 - Bimestre
- * Observação: <colocar se houver>
+ * Observação: <Utilizar os arquivos: Unidade.java e Dezena.java>
  * 
- * nome_arquivo.java
+ * Atividade9_ex4.java
  * ******************************************************************/
 import java.awt.*;
 
 
 public class Atividade9_ex4 extends Frame{
-    private boolean centavos = false;
-    private String valorExtenso = "";
 	Panel p1;
 	Panel p2;
 	Panel p3;
@@ -49,7 +47,6 @@ public class Atividade9_ex4 extends Frame{
 		if("Verificar".equals(arg)){
 			
 			Float num = Float.parseFloat(text1.getText());
-            labe2.setText(num+" a ");
             String resultado = getValorExtenso(num);
 
 			labe2.setText(resultado);
@@ -71,7 +68,6 @@ public class Atividade9_ex4 extends Frame{
 			dez.setDezenaExtenso(numers[1]);
 			valores += dez.getDezena() + " Centavos";
 		}
-		//dez.setDezenaExtenso(getInteiro(num)[0] != 0 ? getInteiro(num)[0] : getInteiro(num)[1]);
 
 		return valores;
     }
