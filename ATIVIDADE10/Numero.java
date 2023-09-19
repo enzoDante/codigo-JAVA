@@ -7,12 +7,13 @@ public class Numero extends Fibonacci{
     public int getNum(){
         return this.num;
     }
-    public String calcFibo(){
-        String svalores = "";
+    public int[] calcFibo(){
+        //String svalores = "";
         int[] nm = this.fibo(this.getNum());
-        for(int i = 0; i < nm.length; i++){
+        /*for(int i = 0; i < nm.length; i++){
             svalores += nm[i] + "  ";
-        }
-        return svalores;
+        }*/
+        //return svalores;
+        return nm;
     }
 }

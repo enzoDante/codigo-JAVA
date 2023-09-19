@@ -1,7 +1,8 @@
+import java.lang.*;
 import java.awt.*;
 public class Atividade10 extends Frame{
     Label lb;
-    Label lb2;
+    List caixaLista;
     TextField txt;
     Button btn;
     Panel p1;
@@ -18,12 +19,16 @@ public class Atividade10 extends Frame{
 
         p2 = new Panel();
         add("Center", p2);
-        lb2 = new Label("==============================================");
-        p2.add(lb2);
+        caixaLista = new List(5, false);
+        p2.add(caixaLista);
+
+
 
         p3 = new Panel();
         add("South", p3);
         p3.add(btn);
+        Button sair = new Button("Sair");
+        p3.add(sair);
 
 
         reshape(100, 100, 400, 300);
@@ -35,8 +40,15 @@ public class Atividade10 extends Frame{
 
             Numero n = new Numero();
             n.setNum(num);
-            String vals = n.calcFibo();
-            lb2.setText(vals);
+            int[] vals = n.calcFibo();
+            caixaLista.removeAll();
+            for(int i = 0; i < vals.length; i++){
+                caixaLista.addItem(vals[i]+"");
+            }
+            
+        }
+        if("Sair".equals(arg)){
+            System.exit(0);
         }
         return true;
     }
