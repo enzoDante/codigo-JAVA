@@ -32,14 +32,27 @@ public class Atividade11_ex4 extends JFrame{
             public void mouseClicked(MouseEvent evento){
                 //JOptionPane.showMessageDialog(null, txt.getText());
                 //"IIIIVIIIIX"
-                String a = "IIIIVIIIIX".substring(0, Integer.parseInt(txt.getText()));
-                System.out.println(a);
+                int num = Integer.parseInt(txt.getText());
+                lista.addItem(NumerRomano(num));
             }
         });
 
         setSize(400,300);
         setVisible(true);
 
+    }
+    public String NumerRomano(int num){
+        int ind = num < 4 ? 0 : (num==4? 3 : (num >= 5 && num < 9? 4:(num==9? 8: 9)));
+        setTexto("IIIIVIIIIX".substring(ind, (num == 4 || num == 9? 1 : 0)+ Integer.parseInt(txt.getText())));
+        //System.out.println(a);
+        return getTexto();        
+
+    }
+    public void setTexto(String value){
+        this.texto = value;
+    }
+    public String getTexto(){
+        return this.texto;
     }
     public static void main(String args[]){
         Atividade11_ex4 app = new Atividade11_ex4();
