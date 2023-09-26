@@ -1,3 +1,14 @@
+/* *******************************************************************
+ * Colegio Técnico Antônio Teixeira Fernandes (Univap)
+ * Curso Técnico em Informática - Data de Entrega: 28/09/2023
+ * Autores do Projeto: Enzo Dante Mícoli
+ *                     
+ * Turma: 3H  Disciplina: Programação - II
+ * Avaliação parcial referente ao 4 - Bimestre
+ * Observação: <colocar se houver>
+ * 
+ * nome_arquivo.java
+ * ******************************************************************/
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

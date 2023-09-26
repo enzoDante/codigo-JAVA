@@ -13,26 +13,27 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class Atividade11_ex4 extends JFrame{
+public class Atividade11_ex5 extends JFrame{
+    private String texto = "";
     JButton btn;
     JTextField txt;
     JLabel rotulo;
     List lista;
 
-    public Atividade11_ex4(){
+    public Atividade11_ex5(){
         Container tela = getContentPane();
         tela.setLayout(null);
-        rotulo = new JLabel("Digite um numero entre 1 a 10:");
+        rotulo = new JLabel("Digite uma frase:");
         tela.add(rotulo);
         rotulo.setBounds(10,5,200,20);
 
         txt = new JTextField();
         tela.add(txt);
-        txt.setBounds(10, 30, 100, 20);
+        txt.setBounds(10, 30, 250, 20);
 
         lista = new List();
         tela.add(lista);
-        lista.setBounds(20, 60, 150, 50);
+        lista.setBounds(20, 60, 250, 50);
 
         btn = new JButton("Ok");
         tela.add(btn);
@@ -40,11 +41,10 @@ public class Atividade11_ex4 extends JFrame{
 
         btn.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evento){
-                //JOptionPane.showMessageDialog(null, txt.getText());
-                //"IIIIVIIIIX"
-                Ex4_metodo metod = new Ex4_metodo();
-                int num = Integer.parseInt(txt.getText());
-                lista.addItem(metod.NumerRomano(num));
+                String texto = txt.getText();
+                Vogais vogais = new Vogais();
+                vogais.VerificarV(texto);
+                lista.addItem("total de Vogais: "+vogais.getTotalVogs() + " | Total de Consoantes: "+vogais.getTotalCons());
             }
         });
 
@@ -53,7 +53,7 @@ public class Atividade11_ex4 extends JFrame{
 
     }
     public static void main(String args[]){
-        Atividade11_ex4 app = new Atividade11_ex4();
+        Atividade11_ex5 app = new Atividade11_ex5();
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
