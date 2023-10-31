@@ -4,8 +4,8 @@ public class Conect {
     Connection con;
     String c_user="root";
     String c_senha="";
-    //String c_fonte="jdbc:mysql://localhost/projeto4_java";
-    String c_fonte="jdbc:mysql://localhost:3306/projeto4_java";
+    String c_fonte="jdbc:mysql://localhost/projeto4_java";
+    //String c_fonte="jdbc:mysql://localhost:3306/projeto4_java?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
 
     public Conect(){
         try{
@@ -13,7 +13,7 @@ public class Conect {
         
             con = DriverManager.getConnection(c_fonte,c_user,c_senha);
             
-            System.out.println("Conexao FEITA");
+            System.out.println("Conexao sucedida");
     
     
         }catch (Exception e) { 
@@ -22,6 +22,27 @@ public class Conect {
     }
     public Connection getConn(){
         return con;
+    }
+    public void ExecutarQuery(String query){
+        try{
+            Statement st = getConn().createStatement();
+            st.executeQuery(query);
+
+        }catch (Exception e){
+            System.out.println("erro ao executar query 1");
+        }
+    }
+    public ResultSet ExecutarQuerySelect(String query){
+       try{
+            Statement st = getConn().createStatement();
+            System.out.println("aaaaaaaaaa");
+            ResultSet rs = st.executeQuery(query);//query
+            return rs;
+            
+        }catch (Exception e){
+            System.out.println("erro ao executar query 2");
+            return null;
+        } 
     }
     /*public Boolean ExecutarQuery(String query){
         try{
@@ -33,22 +54,6 @@ public class Conect {
         }catch (Exception e){
             return false;
         }
-    }*/
-    /*public static void main(String[] args){
-        try{
-            String c_user="root";
-            String c_senha="";
-            String c_fonte="jdbc:mysql://localhost/projeto4_java";
-            Class.forName("com.mysql.jdbc.Driver");
-            
-            Connection con = DriverManager.getConnection(c_fonte,c_user,c_senha);
-            
-            System.out.println("Conexao MS-ACCESS O.K.");
-    
-    
-        }catch (Exception e) { 
-            System.out.println("Erro na Abertura do banco de Dados"); 
-        }
-    }*/
+    }*/    
 
 }

@@ -15,13 +15,14 @@ public class Cadastro extends Conect{
     }
     public String[] setValores(String nome, String email, String telefone, String senha, String csenha){
         try{
-            //this.st = this.conn.createStatement();
-            st = this.con.createStatement();
+            this.st = this.conn.createStatement();
+            //st = this.con.createStatement();
     
             this.setNome(nome);
     
-            ResultSet rs=st.executeQuery("SELECT COUNT(*) FROM usuario where email="+email);
-            //ResultSet rs = ExecutarQuery("SELECT COUNT(*) FROM usuario where email="+email);
+            ResultSet rs=st.executeQuery("SELECT COUNT(*) FROM usuario where email='"+email+"'");
+            //String teste = "SELECT COUNT(*) FROM usuario where email='"+email+"'";
+            //ResultSet rs = ExecutarQuerySelect(teste);
             if(rs.next()){
                 //int existe = Integer.parseInt(rs.getString("id"));
                 int existe = rs.getInt(1);
