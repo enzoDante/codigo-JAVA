@@ -20,9 +20,9 @@ public class Cadastro extends Conect{
     
             this.setNome(nome);
     
-            ResultSet rs=st.executeQuery("SELECT COUNT(*) FROM usuario where email='"+email+"'");
-            //String teste = "SELECT COUNT(*) FROM usuario where email='"+email+"'";
-            //ResultSet rs = ExecutarQuerySelect(teste);
+            //ResultSet rs=st.executeQuery("SELECT COUNT(*) FROM usuario where email='"+email+"'");
+            String query = "SELECT COUNT(*) FROM usuario where email='"+email+"'";
+            ResultSet rs = ExecutarQuerySelect(query);
             if(rs.next()){
                 //int existe = Integer.parseInt(rs.getString("id"));
                 int existe = rs.getInt(1);
@@ -42,7 +42,9 @@ public class Cadastro extends Conect{
                 return new String[] {this.aceito+"",this.msg};
             }
             
-    
+            //inserir
+            query = "INSERT INTO usuario (nome, email, senha, telefone) VALUES(\""+this.getNome()+"\", \""+this.getEmail()+"\",\""+this.getSenha()+"\",\""+this.getTelefone()+"\")";
+            ExecutarQuery(query);
             this.msg = "Cadastrado com sucesso!";
             return new String[] {true+"",this.msg};
         }catch (Exception e){

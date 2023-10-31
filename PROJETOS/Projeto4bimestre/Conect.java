@@ -26,7 +26,7 @@ public class Conect {
     public void ExecutarQuery(String query){
         try{
             Statement st = getConn().createStatement();
-            st.executeQuery(query);
+            st.executeUpdate(query);
 
         }catch (Exception e){
             System.out.println("erro ao executar query 1");
@@ -35,7 +35,6 @@ public class Conect {
     public ResultSet ExecutarQuerySelect(String query){
        try{
             Statement st = getConn().createStatement();
-            System.out.println("aaaaaaaaaa");
             ResultSet rs = st.executeQuery(query);//query
             return rs;
             

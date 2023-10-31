@@ -23,9 +23,9 @@ public class Projeto4B extends JFrame{
         Container tela = getContentPane();
         tela.setLayout(null);
 
-        rotNomeLC = new JLabel("Digite seu nome:");
-        rotNomeLC.setBounds(200, 10, 200, 20);
-        rotEmail = new JLabel("Digite seu email *(somente para cadastro):");
+        rotNomeLC = new JLabel("Digite seu nome *(somente para cadastro):");
+        rotNomeLC.setBounds(200, 10, 280, 20);
+        rotEmail = new JLabel("Digite seu email:");
         rotEmail.setBounds(200, 70, 250, 20);
         rotTelefone = new JLabel("Digite seu telefone *(somente para cadastro):");
         rotTelefone.setBounds(200, 125, 280, 20);
