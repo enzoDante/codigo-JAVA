@@ -1,11 +1,13 @@
 #create database projeto4_java;
 use projeto4_java;
-/*CREATE TABLE usuario (
+/*CREATE TABLE Paciente (
     id INT PRIMARY KEY auto_increment,
     nome VARCHAR(255),
     email VARCHAR(255),
-    senha VARCHAR(255),
-    telefone VARCHAR(20)
+    altura decimal(5,2),
+    peso decimal(5,2),
+    imc decimal(5,2),
+    imcDesc varchar(255)
 );
 
 CREATE TABLE imc_usuario (
@@ -15,6 +17,7 @@ CREATE TABLE imc_usuario (
     imcText varchar(255),
     FOREIGN KEY (usuario_id) REFERENCES usuario(id)
 );*/
-#insert into usuario (nome, email, senha, telefone) values("Teste3", "t3@g.com","123","12991231245");
-#insert into imc_usuario (usuario_id, imcValue, imcText) values(1, 20.0, "normal");
-select * from usuario left join imc_usuario on usuario.id=usuario_id;
+#insert into Paciente (nome, email, altura, peso, imc, imcDesc) values("Teste1", "t1@g.com",2,71.23, 17.5, "Magreza");
+select * from Paciente;
+#select * from usuario left join imc_usuario on usuario.id=usuario_id;
+#SELECT COUNT(*) FROM usuario where email='t@g.com';

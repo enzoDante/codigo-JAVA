@@ -2,84 +2,130 @@ import javax.swing.*;
 import java.sql.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Date;
 
 public class Projeto4B extends JFrame{
-    JButton btnLogin;
-    JButton btnCadastro;
-    JTextField NomeLogCad;
-    JTextField emailLogCad;
-    JTextField telefone;
-    JTextField senhaLogCad;
-    JTextField confirSenhaCad;
+    JTextField Nome;
+    JTextField email;
+    JTextField altura;
+    JTextField massa;
     JLabel rotNomeLC;
     JLabel rotEmail;
-    JLabel rotTelefone;
-    JLabel rotSenha;
-    JLabel rotCSenha;
-    Conect banco;
+    JLabel rotAltura;
+    JLabel rotMassa;
+    JLabel rotIMC_Desc;
+    //Conect banco;
+    JLabel rotBuscaPaciente;
+    JTextField emailPaciente;
+    JButton btnCadastro;
+    JButton btnConsultar;
+    JButton btnAlterar;
+    JButton btnExcluir;
+    int idPaciente;
 
     public Projeto4B(){
         //banco = new Conect();
         Container tela = getContentPane();
         tela.setLayout(null);
+        CampoDadoPaciente(tela);
+        Opcoes(tela);
 
-        rotNomeLC = new JLabel("Digite seu nome *(somente para cadastro):");
-        rotNomeLC.setBounds(200, 10, 280, 20);
-        rotEmail = new JLabel("Digite seu email:");
-        rotEmail.setBounds(200, 70, 250, 20);
-        rotTelefone = new JLabel("Digite seu telefone *(somente para cadastro):");
-        rotTelefone.setBounds(200, 125, 280, 20);
-        rotSenha = new JLabel("Digite sua senha:");
-        rotSenha.setBounds(200, 170, 200, 20);
-        rotCSenha = new JLabel("Confirmar senha *(somente para cadastro):");
-        rotCSenha.setBounds(200, 215, 250, 20);
-
-        NomeLogCad = new JTextField();
-        NomeLogCad.setBounds(200, 35, 200, 20);
-        emailLogCad = new JTextField();
-        emailLogCad.setBounds(200, 95, 200, 20);
-        telefone = new JTextField();
-        telefone.setBounds(200, 145, 200, 20);
-        senhaLogCad = new JTextField();
-        senhaLogCad.setBounds(200, 190, 200, 20);
-        confirSenhaCad = new JTextField();
-        confirSenhaCad.setBounds(200, 235, 200, 20);
-
-        btnLogin = new JButton("Logar");
-        btnLogin.setBounds(320, 300, 100, 30);
-        btnCadastro = new JButton("Cadastrar");
-        btnCadastro.setBounds(200, 300, 100, 30);
-
-        tela.add(rotNomeLC);
-        tela.add(NomeLogCad);
-        tela.add(rotEmail);
-        tela.add(emailLogCad);
-        tela.add(rotTelefone);
-        tela.add(telefone);
-        tela.add(rotSenha);
-        tela.add(senhaLogCad);
-        tela.add(rotCSenha);
-        tela.add(confirSenhaCad);
-        tela.add(btnCadastro);
-        tela.add(btnLogin);
-
-        btnCadastro.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent evento){
-                //JOptionPane.showMessageDialog(null, txt.getText());
-                //"IIIIVIIIIX"
-                //Ex4_metodo metod = new Ex4_metodo();
-                //int num = Integer.parseInt(txt.getText());
-                //lista.addItem(metod.NumerRomano(num));
-                Cadastro cad = new Cadastro();
-                String[] response = cad.setValores(NomeLogCad.getText(), emailLogCad.getText(), telefone.getText(), senhaLogCad.getText(), confirSenhaCad.getText());
-                JOptionPane.showMessageDialog(null, response[1]);
-            }
-        });
-
-        setSize(600,600);
+        setSize(800,400);
         setVisible(true);
 
     }
+    public void CampoDadoPaciente(Container tela){
+        rotNomeLC = new JLabel("Dados do paciente Digite nome:");
+        rotNomeLC.setBounds(10, 10, 280, 20);
+        rotEmail = new JLabel("Digite email:");
+        rotEmail.setBounds(10, 65, 250, 20);
+        rotAltura = new JLabel("Digite sua altura:");
+        rotAltura.setBounds(10, 120, 280, 20);
+        rotMassa = new JLabel("Digite sua massa corporal:");
+        rotMassa.setBounds(10, 165, 200, 20);
+
+        Nome = new JTextField();
+        Nome.setBounds(10, 35, 200, 20);
+        email = new JTextField();
+        email.setBounds(10, 90, 200, 20);
+        altura = new JTextField();
+        altura.setBounds(10, 140, 200, 20);
+        massa = new JTextField();
+        massa.setBounds(10, 185, 200, 20);        
+
+        tela.add(rotNomeLC);
+        tela.add(Nome);
+        tela.add(rotEmail);
+        tela.add(email);
+        tela.add(rotAltura);
+        tela.add(altura);
+        tela.add(rotMassa);
+        tela.add(massa);
+    }
+
+    public void Opcoes(Container tela){
+        btnCadastro = new JButton("Cadastrar");
+        btnCadastro.setBounds(10, 220, 100, 30);
+        tela.add(btnCadastro);
+        btnCadastro.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evento){
+                Cadastro cad = new Cadastro();
+                String[] response = cad.setValores(Nome.getText(), email.getText(), Double.parseDouble(altura.getText()), Double.parseDouble(massa.getText()));
+                JOptionPane.showMessageDialog(null, response[1]);
+            }
+        });
+        //================================================================
+        btnAlterar = new JButton("Alterar");
+        btnAlterar.setBounds(120, 220, 100, 30);
+        tela.add(btnAlterar);
+        btnAlterar.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evento){
+                JOptionPane.showMessageDialog(null, "alterado");
+            }
+        });
+        //================================================================
+
+        rotBuscaPaciente = new JLabel("Digite o email do paciente:");
+        rotBuscaPaciente.setBounds(300, 10, 150, 30);
+        tela.add(rotBuscaPaciente);
+
+        emailPaciente = new JTextField();
+        emailPaciente.setBounds(300, 40, 210, 20);
+        tela.add(emailPaciente);
+
+        //================================================================
+        btnConsultar = new JButton("Consultar");
+        btnConsultar.setBounds(300, 80, 100, 30);
+        tela.add(btnConsultar);
+        btnConsultar.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evento){
+                
+                Consultar consulta = new Consultar();
+                String[] dados = consulta.getPaciente(emailPaciente.getText());
+                if(dados.length > 1){
+                    idPaciente = Integer.parseInt(dados[0]);
+                    Nome.setText(dados[1]);
+                    email.setText(dados[2]);
+                    altura.setText(dados[3]);
+                    massa.setText(dados[4]);
+                    rotIMC_Desc = new JLabel("IMC: ["+dados[5]+"] -> "+ dados[6]);
+                    rotIMC_Desc.setBounds(10, 250, 150, 30);
+                    tela.add(rotIMC_Desc);
+                }else
+                    JOptionPane.showMessageDialog(null, dados[0]);
+            }
+        });
+        //================================================================
+        btnExcluir = new JButton("Excluir");
+        btnExcluir.setBounds(410, 80, 100, 30);
+        tela.add(btnExcluir);
+        btnExcluir.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evento){
+                JOptionPane.showMessageDialog(null, "Excluir");
+            }
+        });
+    }
+
     public static void main(String args[]){
         Projeto4B app = new Projeto4B();
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
