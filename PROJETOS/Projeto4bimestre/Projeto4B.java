@@ -14,17 +14,15 @@ public class Projeto4B extends JFrame{
     JLabel rotAltura;
     JLabel rotMassa;
     JLabel rotIMC_Desc;
-    //Conect banco;
     JLabel rotBuscaPaciente;
     JTextField emailPaciente;
     JButton btnCadastro;
     JButton btnConsultar;
     JButton btnAlterar;
     JButton btnExcluir;
-    int idPaciente;
+    int idPaciente = 0;
 
     public Projeto4B(){
-        //banco = new Conect();
         Container tela = getContentPane();
         tela.setLayout(null);
         CampoDadoPaciente(tela);
@@ -51,7 +49,7 @@ public class Projeto4B extends JFrame{
         altura = new JTextField();
         altura.setBounds(10, 140, 200, 20);
         massa = new JTextField();
-        massa.setBounds(10, 185, 200, 20);        
+        massa.setBounds(10, 185, 200, 20);
 
         tela.add(rotNomeLC);
         tela.add(Nome);
@@ -65,28 +63,44 @@ public class Projeto4B extends JFrame{
 
     public void Opcoes(Container tela){
         btnCadastro = new JButton("Cadastrar");
-        btnCadastro.setBounds(10, 220, 100, 30);
+        btnCadastro.setBounds(10, 240, 100, 30);
         tela.add(btnCadastro);
         btnCadastro.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evento){
-                Cadastro cad = new Cadastro();
-                String[] response = cad.setValores(Nome.getText(), email.getText(), Double.parseDouble(altura.getText()), Double.parseDouble(massa.getText()));
-                JOptionPane.showMessageDialog(null, response[1]);
+                if(CamposVazios()){
+                    Cadastro cad = new Cadastro();
+                    String[] response = cad.setValores(Nome.getText(), email.getText(), Double.parseDouble(altura.getText()), Double.parseDouble(massa.getText()));
+    
+                    RotuloIMC(tela);
+                    JOptionPane.showMessageDialog(null, response[1]);
+                }else
+                    JOptionPane.showMessageDialog(null, "Campos vazios!");
             }
         });
         //================================================================
         btnAlterar = new JButton("Alterar");
-        btnAlterar.setBounds(120, 220, 100, 30);
+        btnAlterar.setBounds(120, 240, 100, 30);
         tela.add(btnAlterar);
         btnAlterar.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evento){
-                JOptionPane.showMessageDialog(null, "alterado");
+                if(CamposVazios()){
+                    Alterar alter = new Alterar();
+                    String[] response = alter.setDadosBanco(idPaciente, Nome.getText(), email.getText(), Double.parseDouble(altura.getText()), Double.parseDouble(massa.getText()));
+                    if(response.length > 1)
+                        RotuloIMC(tela, response[1], response[2]);
+                    else
+                        RotuloIMC(tela);
+    
+                    JOptionPane.showMessageDialog(null, response[0]);
+                }else
+                    JOptionPane.showMessageDialog(null, "Campos vazios!");
+
             }
         });
         //================================================================
 
-        rotBuscaPaciente = new JLabel("Digite o email do paciente:");
-        rotBuscaPaciente.setBounds(300, 10, 150, 30);
+        rotBuscaPaciente = new JLabel("Digite o nome ou email do paciente:");
+        rotBuscaPaciente.setBounds(300, 10, 250, 30);
         tela.add(rotBuscaPaciente);
 
         emailPaciente = new JTextField();
@@ -108,9 +122,8 @@ public class Projeto4B extends JFrame{
                     email.setText(dados[2]);
                     altura.setText(dados[3]);
                     massa.setText(dados[4]);
-                    rotIMC_Desc = new JLabel("IMC: ["+dados[5]+"] -> "+ dados[6]);
-                    rotIMC_Desc.setBounds(10, 250, 150, 30);
-                    tela.add(rotIMC_Desc);
+
+                    RotuloIMC(tela, dados[5], dados[6]);
                 }else
                     JOptionPane.showMessageDialog(null, dados[0]);
             }
@@ -121,9 +134,46 @@ public class Projeto4B extends JFrame{
         tela.add(btnExcluir);
         btnExcluir.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent evento){
-                JOptionPane.showMessageDialog(null, "Excluir");
+                Excluir excl = new Excluir();
+                String response = excl.ExcluirPaciente(emailPaciente.getText());
+                idPaciente = 0;
+                RotuloIMC(tela);
+                JOptionPane.showMessageDialog(null, response);
+
             }
         });
+    }
+    public void RotuloIMC(Container tela, String imc, String imcD){
+        if(rotIMC_Desc != null)
+            tela.remove(rotIMC_Desc);
+            
+        rotIMC_Desc = new JLabel("IMC: ["+imc+"] -> "+ imcD);
+        rotIMC_Desc.setBounds(10, 200, 150, 30);
+        tela.add(rotIMC_Desc);
+        
+        tela.revalidate();
+        tela.repaint();
+    }
+    public void RotuloIMC(Container tela){
+        Nome.setText("");
+        email.setText("");
+        altura.setText("");
+        massa.setText("");
+        if(rotIMC_Desc != null)
+            tela.remove(rotIMC_Desc);
+        tela.revalidate();
+        tela.repaint();
+    }
+    public Boolean CamposVazios(){
+        if(Nome.getText().equals(""))
+            return false;
+        if(email.getText().equals(""))
+            return false;
+        if(altura.getText().equals(""))
+            return false;
+        if(massa.getText().equals(""))
+            return false;
+        return true;
     }
 
     public static void main(String args[]){

@@ -1,12 +1,13 @@
 import java.sql.*;
 public class Consultar extends Conect{
-    public String[] getPaciente(String email){
+    public String[] getPaciente(String value){
         try{            
-            String query = "SELECT * FROM Paciente where email='"+email+"'";
+            String query = "SELECT * FROM Paciente where email='"+value+"'  OR nome='"+value+"'";
             ResultSet rs = ExecutarQuerySelect(query);
             if(rs.next()){                        
                 int id = Integer.parseInt(rs.getString("id"));
                 String nome = rs.getString("nome");
+                String email = rs.getString("email");
                 Double altura = Double.parseDouble(rs.getString("altura"));
                 Double peso = Double.parseDouble(rs.getString("peso"));
                 Double imc = Double.parseDouble(rs.getString("imc"));

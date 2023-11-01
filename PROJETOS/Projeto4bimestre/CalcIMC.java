@@ -2,7 +2,11 @@ public class CalcIMC {
     private double IMC;
     private String imcDesc;
 
+    public String[] DadosIMCCalc(double massa, double altura){
+        this.setIMC(massa, altura);
 
+        return new String[] {this.getIMC()+"", this.getIMCDesc()};
+    }
     public void setIMC(double massa, double altura){
         this.IMC = massa / (altura * altura);
         this.setIMCDesc(this.getIMC());

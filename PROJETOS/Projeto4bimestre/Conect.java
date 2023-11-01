@@ -29,7 +29,7 @@ public class Conect {
             st.executeUpdate(query);
 
         }catch (Exception e){
-            System.out.println("erro ao executar query 1");
+            System.out.println("erro ao executar query 1\n\n"+e);
         }
     }
     public ResultSet ExecutarQuerySelect(String query){
