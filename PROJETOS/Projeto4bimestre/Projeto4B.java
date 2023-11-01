@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Date;
@@ -73,6 +74,8 @@ public class Projeto4B extends JFrame{
     
                     RotuloIMC(tela);
                     JOptionPane.showMessageDialog(null, response[1]);
+                    if(response[1].equals("Cadastrado com sucesso!"))
+                        LogOperacao("Cadastrar");
                 }else
                     JOptionPane.showMessageDialog(null, "Campos vazios!");
             }
@@ -86,8 +89,10 @@ public class Projeto4B extends JFrame{
                 if(CamposVazios()){
                     Alterar alter = new Alterar();
                     String[] response = alter.setDadosBanco(idPaciente, Nome.getText(), email.getText(), Double.parseDouble(altura.getText()), Double.parseDouble(massa.getText()));
-                    if(response.length > 1)
+                    if(response.length > 1){
                         RotuloIMC(tela, response[1], response[2]);
+                        LogOperacao("Alterar");
+                    }
                     else
                         RotuloIMC(tela);
     
@@ -124,6 +129,7 @@ public class Projeto4B extends JFrame{
                     massa.setText(dados[4]);
 
                     RotuloIMC(tela, dados[5], dados[6]);
+                    LogOperacao("Consultar");
                 }else
                     JOptionPane.showMessageDialog(null, dados[0]);
             }
@@ -139,6 +145,8 @@ public class Projeto4B extends JFrame{
                 idPaciente = 0;
                 RotuloIMC(tela);
                 JOptionPane.showMessageDialog(null, response);
+                if(response.equals("Paciente excluido!"))
+                    LogOperacao("Excluir");
 
             }
         });
@@ -174,6 +182,14 @@ public class Projeto4B extends JFrame{
         if(massa.getText().equals(""))
             return false;
         return true;
+    }
+    public void LogOperacao(String Operacao){
+        Conect banco = new Conect();
+        Date dataHoraAtual = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dataHora = sdf.format(dataHoraAtual);
+        String query = "INSERT INTO Log (data_hora, operacao) VALUES (\""+dataHora+"\", \""+Operacao+"\")";
+        banco.ExecutarQuery(query);
     }
 
     public static void main(String args[]){
