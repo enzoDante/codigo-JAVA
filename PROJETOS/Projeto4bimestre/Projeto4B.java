@@ -21,6 +21,7 @@ public class Projeto4B extends JFrame{
     JButton btnConsultar;
     JButton btnAlterar;
     JButton btnExcluir;
+    JButton btnRelatorio;
     int idPaciente = 0;
 
     public Projeto4B(){
@@ -150,6 +151,16 @@ public class Projeto4B extends JFrame{
 
             }
         });
+        //=================================================================
+        btnRelatorio = new JButton("Gerar Relatório");
+        btnRelatorio.setBounds(300, 130, 150, 30);
+        tela.add(btnRelatorio);
+        btnRelatorio.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent evento){
+                Relatorio relat = new Relatorio();
+                relat.gerarRelatorio();
+            }
+        });
     }
     public void RotuloIMC(Container tela, String imc, String imcD){
         if(rotIMC_Desc != null)
@@ -195,5 +206,7 @@ public class Projeto4B extends JFrame{
     public static void main(String args[]){
         Projeto4B app = new Projeto4B();
         app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // Relatorio relat = new Relatorio();
+        // relat.gerarRelatorio();
     }
 }
