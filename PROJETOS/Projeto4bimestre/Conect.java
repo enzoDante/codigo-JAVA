@@ -13,7 +13,7 @@ public class Conect {
         
             con = DriverManager.getConnection(c_fonte,c_user,c_senha);
             
-            System.out.println("Conexao sucedida");
+            //System.out.println("Conexao sucedida");
     
     
         }catch (Exception e) { 

@@ -50,6 +50,36 @@ public class Relatorio extends Conect{
         return null;
         
     }
+    public String todosPacientes(){
+        try {
+            String tabela = "<table border=\"1\">\r\n" +
+                    "        <tr>\r\n" +
+                    "            <th>Nome</th>\r\n" +
+                    "            <th>Peso (kg)</th>\r\n" +
+                    "            <th>Altura (m)</th>\r\n" +
+                    "            <th>IMC</th>\r\n" +
+                    "            <th>Classificação</th>\r\n" +
+                    "        </tr>\r\n";
+
+            String query = "SELECT * FROM Paciente ORDER BY nome";
+            ResultSet rs = ExecutarQuerySelect(query);
+            while(rs.next()){
+                tabela += "<tr>\r\n" +
+                    "   <td>"+rs.getString("nome")+"</td>\r\n" +
+                    "   <td>"+rs.getString("peso")+"</td>\r\n" +
+                    "   <td>"+rs.getString("altura")+"</td>\r\n" +
+                    "   <td>"+rs.getString("imc")+"</td>\r\n" +
+                    "   <td>"+rs.getString("imcDesc")+"</td>\r\n" +
+                    "</tr>";
+            }
+            tabela += "</table>";
+            return tabela;
+
+        } catch (Exception e) {
+            System.out.println("Erro ao executar query de select");
+        }
+        return null;
+    }
     public void gerarRelatorio(){
 
         int[] valores = qtdIMC();
@@ -60,6 +90,28 @@ public class Relatorio extends Conect{
                 "<meta charset=\"UTF-8\">\r\n" + 
                 "<title>Document</title>\r\n" + 
                 "<script src='https://cdn.plot.ly/plotly-2.27.0.min.js'></script>\r\n" + 
+                "<style>\r\n" + 
+                    "table {\r\n" + 
+                    "   border-collapse: collapse;\r\n" + 
+                    "   width: 50%;\r\n" + 
+                    "   margin: 0 auto;\r\n" + 
+                    "   margin-top: 20px;\r\n" +
+                    "}\r\n" + 
+                    "th, td {\r\n" + 
+                    "   padding: 10px;\r\n" + 
+                    "   text-align: center;\r\n" + 
+                    "}\r\n" + 
+                    "th {\r\n" + 
+                    "   background-color: white;\r\n" + 
+                    "   color: black;\r\n" + 
+                    "}\r\n" + 
+                    "tr:nth-child(even) {\r\n" + 
+                    "   background-color: #f2f2f2;\r\n" + 
+                    "}\r\n" + 
+                    "tr:nth-child(odd) {\r\n" + 
+                    "   background-color: #e0e0e0;\r\n" + 
+                    "}\r\n" + 
+                "</style>" +
                 "</head>\r\n" + 
                 "<body>\r\n" + 
                 "<center><div id='myDiv' style=\"width: 500px; height:500px;\">Pesquisa de Indice\r\n" + 
@@ -82,10 +134,11 @@ public class Relatorio extends Conect{
                 "}\r\n" + 
                 "Plotly.newPlot(\"myDiv\", data, layout)\r\n" + 
                 "</script>\r\n" + 
+                todosPacientes() +
                 "</body>\r\n" + 
                 "</html>";
         try {
-            FileWriter arquivo = new FileWriter("relatorio.html", true);
+            FileWriter arquivo = new FileWriter("relatorio.html", false);
             arquivo.write(htmlText);
             arquivo.close();
         } catch (Exception e) {

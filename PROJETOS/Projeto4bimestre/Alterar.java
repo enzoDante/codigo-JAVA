@@ -16,10 +16,10 @@ public class Alterar extends Conect{
                     DecimalFormat form = new DecimalFormat();
                     form.applyPattern("#.##");
                     String imcForm = form.format(Double.parseDouble(imcs[0]));
-                    
                     return new String[] {"Dados do Paciente atualizado!", imcForm, imcs[1]};
                 }else
                     return new String[] {"Paciente inexistente!"};
+                
             }
         } catch (Exception e) {
             System.out.println("erro ao executar query alterar");

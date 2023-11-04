@@ -12,9 +12,7 @@ public class Consultar extends Conect{
                 Double peso = Double.parseDouble(rs.getString("peso"));
                 Double imc = Double.parseDouble(rs.getString("imc"));
                 String imcDesc = rs.getString("imcDesc");
-                
                 return new String[] {id+"", nome, email, altura+"", peso+"", imc+"", imcDesc};
-            
             }
 
         }catch (Exception e) {

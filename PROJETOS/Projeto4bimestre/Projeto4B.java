@@ -159,6 +159,7 @@ public class Projeto4B extends JFrame{
             public void mouseClicked(MouseEvent evento){
                 Relatorio relat = new Relatorio();
                 relat.gerarRelatorio();
+                JOptionPane.showMessageDialog(null, "Relatório gerado com sucesso!");
             }
         });
     }
@@ -167,7 +168,7 @@ public class Projeto4B extends JFrame{
             tela.remove(rotIMC_Desc);
             
         rotIMC_Desc = new JLabel("IMC: ["+imc+"] -> "+ imcD);
-        rotIMC_Desc.setBounds(10, 200, 150, 30);
+        rotIMC_Desc.setBounds(10, 200, 200, 30);
         tela.add(rotIMC_Desc);
         
         tela.revalidate();

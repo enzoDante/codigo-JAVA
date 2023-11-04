@@ -4,159 +4,35 @@
 <meta charset="UTF-8">
 <title>Document</title>
 <script src='https://cdn.plot.ly/plotly-2.27.0.min.js'></script>
-</head>
+<style>
+table {
+   border-collapse: collapse;
+   width: 50%;
+   margin: 0 auto;
+   margin-top: 20px;
+}
+th, td {
+   padding: 10px;
+   text-align: center;
+}
+th {
+   background-color: white;
+   color: black;
+}
+tr:nth-child(even) {
+   background-color: #f2f2f2;
+}
+tr:nth-child(odd) {
+   background-color: #e0e0e0;
+}
+</style></head>
 <body>
 <center><div id='myDiv' style="width: 500px; height:500px;">Pesquisa de Indice
 de Massa Corporal</div></center>
 <script>
 var data = [{
 type: 'scatterpolar',
-r: [1, 4, 0, 1, 0, 0],
-theta: ['Magreza','Saúdavel','Sobrepeso', 'OBG-I', 'OBG-II', 'OBG-III'],
-fill: 'toself'
-}]
-layout = {
-polar: {
-radialaxis: {
-visible: true,
-range: [0, 6]
-}
-},
-showlegend: false
-}
-Plotly.newPlot("myDiv", data, layout)
-</script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Document</title>
-<script src='https://cdn.plot.ly/plotly-2.27.0.min.js'></script>
-</head>
-<body>
-<center><div id='myDiv' style="width: 500px; height:500px;">Pesquisa de Indice
-de Massa Corporal</div></center>
-<script>
-var data = [{
-type: 'scatterpolar',
-r: [1, 4, 0, 1, 0, 0],
-theta: ['Magreza','Saúdavel','Sobrepeso', 'OBG-I', 'OBG-II', 'OBG-III'],
-fill: 'toself'
-}]
-layout = {
-polar: {
-radialaxis: {
-visible: true,
-range: [0, 6]
-}
-},
-showlegend: false
-}
-Plotly.newPlot("myDiv", data, layout)
-</script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Document</title>
-<script src='https://cdn.plot.ly/plotly-2.27.0.min.js'></script>
-</head>
-<body>
-<center><div id='myDiv' style="width: 500px; height:500px;">Pesquisa de Indice
-de Massa Corporal</div></center>
-<script>
-var data = [{
-type: 'scatterpolar',
-r: [1, 4, 1, 1, 0, 4],
-theta: ['Magreza','Saúdavel','Sobrepeso', 'OBG-I', 'OBG-II', 'OBG-III'],
-fill: 'toself'
-}]
-layout = {
-polar: {
-radialaxis: {
-visible: true,
-range: [0, 11]
-}
-},
-showlegend: false
-}
-Plotly.newPlot("myDiv", data, layout)
-</script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Document</title>
-<script src='https://cdn.plot.ly/plotly-2.27.0.min.js'></script>
-</head>
-<body>
-<center><div id='myDiv' style="width: 500px; height:500px;">Pesquisa de Indice
-de Massa Corporal</div></center>
-<script>
-var data = [{
-type: 'scatterpolar',
-r: [2, 5, 2, 1, 0, 6],
-theta: ['Magreza','Saúdavel','Sobrepeso', 'OBG-I', 'OBG-II', 'OBG-III'],
-fill: 'toself'
-}]
-layout = {
-polar: {
-radialaxis: {
-visible: true,
-range: [0, 50]
-}
-},
-showlegend: false
-}
-Plotly.newPlot("myDiv", data, layout)
-</script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Document</title>
-<script src='https://cdn.plot.ly/plotly-2.27.0.min.js'></script>
-</head>
-<body>
-<center><div id='myDiv' style="width: 500px; height:500px;">Pesquisa de Indice
-de Massa Corporal</div></center>
-<script>
-var data = [{
-type: 'scatterpolar',
-r: [2, 5, 2, 1, 0, 6],
-theta: ['Magreza','Saúdavel','Sobrepeso', 'OBG-I', 'OBG-II', 'OBG-III'],
-fill: 'toself'
-}]
-layout = {
-polar: {
-radialaxis: {
-visible: true,
-range: [0, 20]
-}
-},
-showlegend: false
-}
-Plotly.newPlot("myDiv", data, layout)
-</script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Document</title>
-<script src='https://cdn.plot.ly/plotly-2.27.0.min.js'></script>
-</head>
-<body>
-<center><div id='myDiv' style="width: 500px; height:500px;">Pesquisa de Indice
-de Massa Corporal</div></center>
-<script>
-var data = [{
-type: 'scatterpolar',
-r: [2, 5, 2, 1, 0, 6],
+r: [2, 5, 2, 1, 1, 5],
 theta: ['Magreza','Saúdavel','Sobrepeso', 'OBG-I', 'OBG-II', 'OBG-III'],
 fill: 'toself'
 }]
@@ -171,5 +47,109 @@ showlegend: false
 }
 Plotly.newPlot("myDiv", data, layout)
 </script>
-</body>
+<table border="1">
+        <tr>
+            <th>Nome</th>
+            <th>Peso (kg)</th>
+            <th>Altura (m)</th>
+            <th>IMC</th>
+            <th>Classificação</th>
+        </tr>
+<tr>
+   <td>Ana</td>
+   <td>75.00</td>
+   <td>1.50</td>
+   <td>33.33</td>
+   <td>Obesidade grau I</td>
+</tr><tr>
+   <td>Augusto</td>
+   <td>80.00</td>
+   <td>2.00</td>
+   <td>20.00</td>
+   <td>Saudavel</td>
+</tr><tr>
+   <td>Carl</td>
+   <td>100.00</td>
+   <td>1.60</td>
+   <td>39.06</td>
+   <td>Obesidade grau II</td>
+</tr><tr>
+   <td>carlos</td>
+   <td>250.00</td>
+   <td>1.85</td>
+   <td>73.05</td>
+   <td>Obesidade grau III</td>
+</tr><tr>
+   <td>Daniel</td>
+   <td>72.00</td>
+   <td>1.83</td>
+   <td>21.50</td>
+   <td>Saudavel</td>
+</tr><tr>
+   <td>Enzo Dante</td>
+   <td>66.00</td>
+   <td>1.66</td>
+   <td>23.95</td>
+   <td>Saudavel</td>
+</tr><tr>
+   <td>Jao</td>
+   <td>85.00</td>
+   <td>1.99</td>
+   <td>21.46</td>
+   <td>Saudavel</td>
+</tr><tr>
+   <td>Jarls</td>
+   <td>35.00</td>
+   <td>1.70</td>
+   <td>12.11</td>
+   <td>Magreza</td>
+</tr><tr>
+   <td>Julia</td>
+   <td>55.00</td>
+   <td>1.62</td>
+   <td>20.96</td>
+   <td>Saudavel</td>
+</tr><tr>
+   <td>Larls</td>
+   <td>40.00</td>
+   <td>1.70</td>
+   <td>13.84</td>
+   <td>Magreza</td>
+</tr><tr>
+   <td>Marcia</td>
+   <td>90.00</td>
+   <td>1.45</td>
+   <td>42.81</td>
+   <td>Obesidade grau III</td>
+</tr><tr>
+   <td>Rodrigo</td>
+   <td>79.00</td>
+   <td>1.77</td>
+   <td>25.22</td>
+   <td>Sobrepeso</td>
+</tr><tr>
+   <td>Ronaldo</td>
+   <td>120.00</td>
+   <td>1.60</td>
+   <td>46.87</td>
+   <td>Obesidade grau III</td>
+</tr><tr>
+   <td>violeta</td>
+   <td>73.00</td>
+   <td>1.59</td>
+   <td>28.88</td>
+   <td>Sobrepeso</td>
+</tr><tr>
+   <td>vitor</td>
+   <td>160.00</td>
+   <td>1.77</td>
+   <td>51.07</td>
+   <td>Obesidade grau III</td>
+</tr><tr>
+   <td>Zarl</td>
+   <td>210.00</td>
+   <td>1.70</td>
+   <td>72.66</td>
+   <td>Obesidade grau III</td>
+</tr></table></body>
 </html>

@@ -1,6 +1,11 @@
 #create database projeto4_java;
 use projeto4_java;
-/*CREATE TABLE Paciente (
+/*CREATE TABLE log (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    data_hora DATETIME,
+    operacao varchar(255)
+);
+CREATE TABLE Paciente (
     id INT PRIMARY KEY auto_increment,
     nome VARCHAR(255),
     email VARCHAR(255),
@@ -18,6 +23,8 @@ CREATE TABLE imc_usuario (
     FOREIGN KEY (usuario_id) REFERENCES usuario(id)
 );*/
 #insert into Paciente (nome, email, altura, peso, imc, imcDesc) values("Teste1", "t1@g.com",2,71.23, 17.5, "Magreza");
-select * from Paciente;
-#select * from usuario left join imc_usuario on usuario.id=usuario_id;
-#SELECT COUNT(*) FROM usuario where email='t@g.com';
+#DELETE FROM Paciente;
+select * from Log;
+SELECT * FROM Paciente order by nome;
+#SELECT COUNT(*) FROM Paciente WHERE imc < 18.5;
+#SELECT COUNT(*) FROM Paciente WHERE imc >= 18.5 AND imc< 25;
