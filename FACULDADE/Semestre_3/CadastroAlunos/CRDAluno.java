@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class CRDAluno {
+public class CRDAluno extends ValidarDados {
     public List<Aluno> Alunos = new ArrayList<>();
 
     public boolean Inserir(Aluno value){
@@ -43,7 +43,7 @@ public class CRDAluno {
             for (Aluno aluno : Alunos) {
                 msg += "[Nome: ["+aluno.getNome()+"] RA: ["+aluno.getRa()+"]  Curso: ["+aluno.getCurso()+"]\n Idade: ["+aluno.getIdade()+"] ID: ["+aluno.getId()+"] Periodo: ["+aluno.getPeriodo()+"] ]\n\n";
             }
-            
+
         return msg;
     }
 
