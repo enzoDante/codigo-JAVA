@@ -15,7 +15,7 @@ public class MenuOriginal {
     public List<Aluno> lista = new ArrayList<>();
     public boolean grafico = false;
     Scanner scanner = new Scanner(System.in);
-    public String[] ALFABeto = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","ã","í","ú"};
+ 
 
     /**
      * Menu com opções
@@ -85,17 +85,13 @@ public class MenuOriginal {
             switch(op)
             {
                 case "1":
-                    try {
-                        Inserir();
-                    } catch (Exception e) {
-                      JOptionPane.showMessageDialog(null, "Aluno não inserido por erro de digitação.");
-                    }
+                    Inserir();
                     break;
                 case "2":
                     try {
                         remover();
                     } catch (Exception e) {
-                      JOptionPane.showMessageDialog(null, "Aluno não removido por erro de digitação.");
+                      /*  System.out.println("Retornado ao menu\n");*/
                     }
                     break;
                 case "3":
@@ -111,18 +107,10 @@ public class MenuOriginal {
             switch(op)
             {
                 case "1":
-                    try {
-                        Inserir();
-                    } catch (Exception e) {
-                      System.out.println("Aluno não inserido por erro de digitação.");
-                    }
+                    Inserir();
                     break;
                 case "2":
-                    try {
-                        remover();
-                    } catch (Exception e) {
-                      System.out.println("Aluno não removido por erro de digitação.");
-                    }
+                    remover();
                     break;
                 case "3":
                     listar();
@@ -146,11 +134,11 @@ public class MenuOriginal {
             if(grafico){
                 
                 // Entrada de um nome do aluno (atraves do teclado)
-                nome = inputPainel("Forneca o nome do aluno: ", false, false).trim();
+                nome = inputPainel("Forneca o nome do aluno: ", false).trim();
             
                 
                 // Entrada da idade do aluno (atraves do teclado)
-                idade = Integer.parseInt(inputPainel("Forneca a idade do aluno: ", true, true).trim());
+                idade = Integer.parseInt(inputPainel("Forneca a idade do aluno: ", true).trim());
         
                 // Entrada de uma identificacao do aluno (atraves do teclado)
                 rg = Identidade("Forneca o ID do aluno : ", true).trim();
@@ -159,16 +147,16 @@ public class MenuOriginal {
                 ra = validarRA("Forneca o RA do aluno:", true).trim();
         
                 // Entrada do curso do aluno (atraves do teclado)
-                curso = inputPainel("Forneca o curso do aluno:", false, false).trim();
+                curso = inputPainel("Forneca o curso do aluno:", false).trim();
         
                 // Entrada da idade do aluno (atraves do teclado)
-                periodo = Integer.parseInt(inputPainel("Forneca o periodo do aluno:", true, false).trim());
+                periodo = Integer.parseInt(inputPainel("Forneca o periodo do aluno:", true).trim());
             }else{
                 // Entrada de um nome do aluno (atraves do teclado)
-                nome = inputConsole("Forneca o nome do aluno: ", false, false).trim();
+                nome = inputConsole("Forneca o nome do aluno: ", false).trim();
                 
                 // Entrada da idade do aluno (atraves do teclado)
-                idade = Integer.parseInt(inputConsole("Forneca a idade do aluno: ", true, true).trim());
+                idade = Integer.parseInt(inputConsole("Forneca a idade do aluno: ", true).trim());
         
                 // Entrada de uma identificacao do aluno (atraves do teclado)
                 rg = Identidade("Forneca o ID do aluno : ", true).trim();
@@ -177,10 +165,10 @@ public class MenuOriginal {
                 ra = validarRA("Forneca o RA do aluno:", true).trim();
         
                 // Entrada do curso do aluno (atraves do teclado)
-                curso = inputConsole("Forneca o curso do aluno:", false, false).trim();
+                curso = inputConsole("Forneca o curso do aluno:", false).trim();
         
                 // Entrada da idade do aluno (atraves do teclado)
-                periodo = Integer.parseInt(inputConsole("Forneca o periodo do aluno:", true, false).trim());
+                periodo = Integer.parseInt(inputConsole("Forneca o periodo do aluno:", true).trim());
             }
     
             // Criacao de uma instancia da classe Aluno
@@ -275,32 +263,17 @@ public class MenuOriginal {
      * @param numerico (boolean) entrada numérica ou caractere
      * @return (String) valor digitado pelo usuário
      */
-    public String inputPainel(String msg, boolean numerico, boolean isidade){
+    public String inputPainel(String msg, boolean numerico){
 
         String valor = "";
-        int idadeperiodo = 0;
         if(numerico){
             while (true) { 
                 valor = JOptionPane.showInputDialog(msg).trim();
-                if(isNumeric(valor)){
-                    idadeperiodo = Integer.parseInt(valor);
-                    if(isidade)
-                    {
-                        if (idadeperiodo < 1 || idadeperiodo > 100)
-                            JOptionPane.showMessageDialog(null, "idade nao compativel (minimo 1 e maximo 100)");
-                        else
-                            break;
-                    }
-                    else
-                    {
-                        if (idadeperiodo < 1 || idadeperiodo > 14)
-                            JOptionPane.showMessageDialog(null, "periodo nao compativel (minimo 1 e maximo 14)");
-                        else
-                            break;
-                    }
-                }
+                if(isNumeric(valor))
+                    break;
                 else
                     JOptionPane.showMessageDialog(null, "Insira um valor corretamente!");
+                
             }
         }
         else{
@@ -326,31 +299,17 @@ public class MenuOriginal {
      * @param numerico (boolean) entrada numérica ou caractere
      * @return (String) valor digitado pelo usuário
      */
-    public String inputConsole(String msg, boolean numerico, boolean isidade){
+    public String inputConsole(String msg, boolean numerico){
         String valor = "";
-        int idadeperiodo = 0;
         if(numerico){
             while (true) { 
                 System.out.println(msg);
                 valor = scanner.nextLine().trim();
-                if(isNumeric(valor)){
-                    idadeperiodo = Integer.parseInt(valor);
-                    if(isidade){
-                        if (idadeperiodo < 1 || idadeperiodo > 100)
-                            System.out.println("idade nao compativel (minimo 1 maximo 100)");
-                        else
-                            break;
-                    }
-                    else
-                    {
-                        if(idadeperiodo < 1 || idadeperiodo > 14)
-                            System.out.println("periodo nao compativel (minimo 1 maximo 14)");
-                        else
-                            break;
-                    }
-                }
+                if(isNumeric(valor))
+                    break;
                 else
                     System.out.println("Insira um valor corretamente!");
+                
             }
         }
         else{
@@ -359,7 +318,7 @@ public class MenuOriginal {
                 System.out.println(msg);
                 valor = scanner.nextLine().trim();
                 for (int i = 0; i < valor.length(); i++) {
-                    if(isNumeric(valor.charAt(i)+"")){
+                    if(isNumeric(valor.charAt(i)+"") || !isAlfabeta(valor.charAt(i) + "")){
                         validar = false;
                         System.out.println("Preencha o campo corretamente!");
                         break;
@@ -476,9 +435,9 @@ public class MenuOriginal {
         return true;
     }
 
-   public boolean isAlfabeta(String str) {
+    public boolean isAlfabeta(String str) {
         // Verifica se o caractere é alfabético (A-Z ou a-z) ou numérico (0-9)
-        return (str.matches("[a-zA-ZàáâãäåéèêëíìîïóòôõöúùûüÿçÇ ]") || isNumeric(str));   
-
+        return (str.matches("[a-zA-ZàáâãäåéèêëíìîïóòôõöúùûüÿçÇ ]") || isNumeric(str));    
     }
+
 }

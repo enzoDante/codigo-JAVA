@@ -1,4 +1,3 @@
-import javax.swing.JOptionPane;
 
 public class ValidarDados {
     
@@ -34,7 +33,7 @@ public class ValidarDados {
         return true;
     }
 
-    public boolean validarRA(String value, boolean cadastro){
+    public boolean validarRA(String value){
         if(value.length() > 2 && value.toUpperCase().startsWith("RA") && isNumeric(value.substring(2, value.length())))
             return true;
         
@@ -63,4 +62,8 @@ public class ValidarDados {
         return (str.matches("[a-zA-ZàáâãäåéèêëíìîïóòôõöúùûüÿçÇ ]") || isNumeric(str));   
 
     }
+
+
+
+
 }

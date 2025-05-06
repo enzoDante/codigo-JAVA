@@ -37,18 +37,22 @@ public class CRDAluno extends ValidarDados {
         return false; // não existe aluno com esse ra
     }
 
-    public String Select(){
-        String msg = "";
+    public Object[][] Select(){
+        
+        Object[][] dados = new Object[Alunos.size()][6];
         if(!Alunos.isEmpty())
-            for (Aluno aluno : Alunos) {
-                msg += "[Nome: ["+aluno.getNome()+"] RA: ["+aluno.getRa()+"]  Curso: ["+aluno.getCurso()+"]\n Idade: ["+aluno.getIdade()+"] ID: ["+aluno.getId()+"] Periodo: ["+aluno.getPeriodo()+"] ]\n\n";
+            for(int i = 0; i < Alunos.size(); i++){
+                Aluno aluno = Alunos.get(i);
+                dados[i][0] = aluno.getNome();
+                dados[i][1] = aluno.getIdade();
+                dados[i][2] = aluno.getRa();
+                dados[i][3] = aluno.getId();
+                dados[i][4] = aluno.getCurso();
+                dados[i][5] = aluno.getPeriodo();
             }
 
-        return msg;
+        return dados;
     }
-
-
-
 
 
 }
