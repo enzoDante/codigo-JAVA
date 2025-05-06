@@ -2,6 +2,8 @@
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,6 +27,9 @@ public class ComponentesSWING {
     JButton BtnAvancar;
 
     CRDAluno ALUNO = new CRDAluno();
+    public void inicializarArquivo(){
+        ALUNO.Alunos = PermanenciaArquivo.lerAlunos("D:\\Document\\vsCode\\codigo-JAVA\\FACULDADE\\arquivoAlunos.bin");
+    }
 
     public void formMenu(Container tela){
         JTitulo = new JLabel("MENU");
@@ -187,6 +192,7 @@ public class ComponentesSWING {
                         tela.revalidate();
                         tela.repaint();
 
+                        PermanenciaArquivo.salvarAlunos(ALUNO.Alunos, "D:\\Document\\vsCode\\codigo-JAVA\\FACULDADE\\arquivoAlunos.bin");
                         formMenu(tela);
                         JOptionPane.showMessageDialog(null, "Aluno Cadastrado com sucesso!");
                     }else{
@@ -243,6 +249,7 @@ public class ComponentesSWING {
                         tela.repaint();
                         
                         formMenu(tela);
+                        PermanenciaArquivo.salvarAlunos(ALUNO.Alunos, "D:\\Document\\vsCode\\codigo-JAVA\\FACULDADE\\arquivoAlunos.bin");
                         JOptionPane.showMessageDialog(null, "Aluno removido com sucesso!");
                     }else{
                         JOptionPane.showMessageDialog(null, "Não existe aluno com esse RA!");

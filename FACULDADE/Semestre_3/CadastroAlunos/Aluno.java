@@ -6,7 +6,8 @@
  * @author Enzo Dante Mícoli ra00347608, Gabriel Azevedo Cruz ra00345943, Nícolas Okamoto Celestrino ra00345719, Pedro Bizzari ra00346785
  * @version 03/04/2025
  */
-public class Aluno extends Pessoa {
+import java.io.Serializable; // Serializable para converter Aluno em arquivo bin
+public class Aluno extends Pessoa implements Serializable {
     // Atributos/Variaveis de instancia
     String ra;
     String curso;

@@ -9,6 +9,7 @@ public class AppSWING extends JFrame{
         tela.setLayout(null);
 
         // comp.formCadastro(tela);
+        comp.inicializarArquivo();
         comp.formMenu(tela);
 
 

@@ -1,3 +1,5 @@
+import java.io.Serializable;
+
 /**
  * Classe para armazenar o nome de uma pessoa. Possibilita inverter nome e limpar
  * espaços extras (operaçoes herdados da classe pai).
@@ -6,7 +8,7 @@
  * @author Enzo Dante Mícoli ra00347608, Gabriel Azevedo Cruz ra00345943, Nícolas Okamoto Celestrino ra00345719, Pedro Bizzari ra00346785
  * @version 03/04/2025
  */
-public class NomePessoa {
+public class NomePessoa implements Serializable {
     // Atributos
     private Texto nome;
 

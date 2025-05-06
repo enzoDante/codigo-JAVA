@@ -1,3 +1,4 @@
+import java.io.Serializable;
 
 /**
  * Implementa um "template" (tipo de dados) para criar 
@@ -6,7 +7,7 @@
  * @author Enzo Dante Mícoli ra00347608, Gabriel Azevedo Cruz ra00345943, Nícolas Okamoto Celestrino ra00345719, Pedro Bizzari ra00346785
  * @version 03/04/2025
  */
-public class Pessoa {
+public class Pessoa implements Serializable {
     // Variaveis de instancia
     // ou Variaveis de estado
     // ou Atributos

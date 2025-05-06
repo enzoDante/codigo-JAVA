@@ -1,3 +1,5 @@
+import java.io.Serializable;
+
 /**
  * Armazena um texto. Inverte texto e limpa espaços extras
  * 
@@ -5,7 +7,7 @@
  * @version 03/04/2025
  */
 
-public class Texto {
+public class Texto implements Serializable {
     // Atributo da classe ou varáveis de instancia
     private String txt;
     
