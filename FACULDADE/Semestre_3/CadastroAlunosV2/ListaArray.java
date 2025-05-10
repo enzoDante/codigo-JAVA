@@ -1,3 +1,4 @@
+import DadosAlunoPac.Aluno;
 import java.util.ArrayList;
 /**
  * Escreva a descrição da classe Lista aqui.
@@ -7,10 +8,10 @@ import java.util.ArrayList;
  */
 public class ListaArray implements IArmazenador {
 
-    private ArrayList <Object> lista;
+    private ArrayList <Aluno> lista;
 
     public ListaArray(){
-        setLista(new <Object>ArrayList());
+        this.lista = new ArrayList<>();
     }
 
     /**
@@ -18,7 +19,7 @@ public class ListaArray implements IArmazenador {
      * 
      * @return the vet
      */
-    private ArrayList <Object> getLista() {
+    private ArrayList <Aluno> getLista() {
         return lista;
     }
 
@@ -36,7 +37,7 @@ public class ListaArray implements IArmazenador {
      * 
      * @param vet the vet to set
      */
-    private void setLista(ArrayList <Object>lista) {
+    private void setLista(ArrayList <Aluno>lista) {
         this.lista = lista;
     }
 
@@ -45,7 +46,7 @@ public class ListaArray implements IArmazenador {
      *
      * @param obj Um parâmetro
      */
-    public void adicionar(Object obj){
+    public void adicionar(Aluno obj){
         lista.add(obj);
     }
 
@@ -54,14 +55,14 @@ public class ListaArray implements IArmazenador {
      *
      * @param i Um parâmetro
      */
-    public Object remover(int i) {
-        Object ret = null;
+    public Aluno remover(int i) {
+        // Object ret = null;
 
         if (buscar(i) != null){
-            ret = lista.get(i);
-            lista.remove(i);
+            //ret = lista.get(i);
+            return lista.remove(i);
         }
-        return ret;
+        return null;
     }
 
     /**
@@ -70,12 +71,20 @@ public class ListaArray implements IArmazenador {
      * @param i Um parâmetro
      * @return O valor de retorno
      */
-    public Object buscar (int i){
-        Object ret = null;
-        if(!lista.isEmpty()&& (i >= 0 && i < getQtd())){
-            ret = lista.get(i);
+    public Aluno buscar (int i){
+        
+        if(!lista.isEmpty()&& i >= 0 && i < lista.size()){
+            return lista.get(i);
         }
-        return ret;
+        return null;
+    }
+
+    public Aluno buscarPorRA(String ra){
+        for (Aluno aluno : lista) {
+            if(aluno.getRa().equals(ra))
+                return aluno;
+        }
+        return null;
     }
 
     /**

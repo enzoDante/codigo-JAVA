@@ -1,4 +1,4 @@
-
+import DadosAlunoPac.Aluno;
 /**
  * IArmazenador interface para armazenadores.
  * 
@@ -7,9 +7,11 @@
  */
 
 public interface IArmazenador { 
-    public void adicionar(Object a);
-    public Object remover(int i);
+    public void adicionar(Aluno a);
+    public Aluno remover(int i);
     public boolean estaVazia();
-    public Object buscar (int i);
+    public Aluno buscar (int i);
+    public Aluno buscarPorRA(String ra);
+    public int getQtd();
 }
 

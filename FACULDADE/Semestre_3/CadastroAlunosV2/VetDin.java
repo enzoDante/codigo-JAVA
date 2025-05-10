@@ -1,4 +1,4 @@
-
+import DadosAlunoPac.Aluno;
 /**
  * "simula" um array dinamico.
  * 
@@ -9,7 +9,7 @@ public class VetDin implements IArmazenador {
 
     // Atributos
     // array para armazenar qquer objeto
-    private Object array[]; 
+    private Aluno[] array; 
     // quantidade de objetos no vetor
     private int qtd;
 
@@ -18,8 +18,8 @@ public class VetDin implements IArmazenador {
      *
      */
     public VetDin(){
-        setArray(null);
-        setQtd(0);
+        this.array = null;
+        this.qtd = 0;
     }
 
     /**
@@ -27,7 +27,7 @@ public class VetDin implements IArmazenador {
      * 
      * @return vetor de Object
      */
-    private Object[] getArray() {
+    private Aluno[] getArray() {
         return array;
     }
 
@@ -43,7 +43,7 @@ public class VetDin implements IArmazenador {
     /**
      * @param vet the vet to set
      */
-    private void setArray(Object[] array) {
+    private void setArray(Aluno[] array) {
         this.array = array;
     }
 
@@ -59,15 +59,16 @@ public class VetDin implements IArmazenador {
      *
      * @param obj Um parâmetro
      */
-    public void adicionar(Object obj){
+    public void adicionar(Aluno obj){
         if (array == null){ // se for o primeiro elemento          
-            setArray(new Object[1]);
+            // setArray(new Object[1]);
+            array = new Aluno[1];
             array[0] = obj; 
-            setQtd(getQtd()+1);
+            // setQtd(getQtd()+1);
         }
         else { // outros elementos
             // cria vetor auxiliar com mais um elemento
-            Object aux[] = new Object[array.length+1];
+            Aluno aux[] = new Aluno[array.length+1];
 
             // copia todos elementos de vet para aux
             copiar(array, aux);
@@ -76,12 +77,14 @@ public class VetDin implements IArmazenador {
             aux[aux.length-1] = obj;
 
             // Transforma vetor auxiliar no atual
-            setArray(aux);
+            // setArray(aux);
+            array = aux;
 
             // incrementa contador de elementos    
-            setQtd(getQtd()+1);
+            // setQtd(getQtd()+1);
 
         }
+        qtd++;
     }
 
     /**
@@ -89,34 +92,37 @@ public class VetDin implements IArmazenador {
      *
      * @param i Um parâmetro
      */
-    public Object remover(int i) {
-        Object ret = null;
+    public Aluno remover(int i) {
+        // Object ret = null;
         if(buscar(i) != null){
-            ret = array[i];
+            // ret = array[i];
+            Aluno removido = array[i];
             // Libera elemento da sua posicao
             array[i] = null;
 
-            if(getQtd() > 1){
+            if(qtd > 1){
                 // cria vetor auxiliar com mes um elemento
-                Object aux[] = new Object[array.length-1];
+                Aluno aux[] = new Aluno[array.length-1];
 
                 // copia todos elementos de vet para aux
                 copiar(array, aux);
 
                 // Transforma vetor auxiliar no atual
-                setArray(aux);
+                array = aux;
                 // decrementa contador de elementos    
-                setQtd(getQtd() - 1);
+                // setQtd(getQtd() - 1);
             } else {
                 // acabou os elementos
-                setArray(null);
+                // setArray(null);
                 // decrementa contador de elementos    
-                setQtd(0);
+                // setQtd(0);
+                array = null;
 
             }
-
+            qtd--;
+            return removido;
         }
-        return ret;
+        return null;
     }
 
     /**
@@ -125,12 +131,21 @@ public class VetDin implements IArmazenador {
      * @param i Um parâmetro
      * @return O valor de retorno
      */
-    public Object buscar (int i){
-        Object ret = null;
-        if(array != null && (i >= 0 && i < getQtd())) {
-            ret = array[i];
+    public Aluno buscar (int i){
+        if(array != null && i >= 0 && i < qtd) {
+            return array[i];
         }
-        return ret;
+        return null;
+    }
+
+    public Aluno buscarPorRA(String ra){
+        if(array != null){
+            for(int i = 0; i < qtd; i++){
+                if(array[i] != null && array[i].getRa().equals(ra))
+                    return array[i];
+            }
+        }
+        return null;
     }
 
     /**
@@ -139,7 +154,7 @@ public class VetDin implements IArmazenador {
      * @return O valor de retorno
      */
     public boolean estaVazia(){
-        return (getQtd()==0 && getArray() == null);
+        return (qtd==0 && array == null);
     }
 
     /**
@@ -148,15 +163,13 @@ public class VetDin implements IArmazenador {
      * @param origem Um parâmetro
      * @param destino Um parâmetro
      */
-    private void copiar(Object origem[], Object destino[]){
+    private void copiar(Aluno origem[], Aluno destino[]){
         // copia todos
-        int i, k = 0;
-        for (i = 0; i < origem.length; i++){
-            if (origem[i] != null) {
-                destino[k] = origem[i];
-                k++;
-            }
-        }       
+        int k = 0;
+        for (Aluno aluno : destino) {
+            if(aluno != null)
+                destino[k++] = aluno;
+        }      
     }
 
     /**
