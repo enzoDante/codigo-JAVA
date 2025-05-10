@@ -9,7 +9,6 @@ public class FormMenu extends JPanel {
         JLabel JTitulo = new JLabel("MENU", SwingConstants.CENTER);
         add(JTitulo);
         JTitulo.setBounds(90, 5, 200, 20);
-        // JTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 
         JButton BtnCadastro = new JButton("CADASTRAR");
         add(BtnCadastro);

@@ -5,23 +5,6 @@ import java.io.IOException;
 import javax.swing.*;
 
 public class ComponentesSWING {
-    JLabel JTitulo;
-    JLabel JNome;
-    JLabel JIdade;
-    JLabel JID;
-    JLabel JRA;
-    JLabel JCurso;
-    JLabel JPeriodo;
-
-    JTextField Nome;
-    JTextField Idade;
-    JTextField ID;
-    JTextField RA;
-    JTextField Curso;
-    JTextField Periodo;
-
-    JButton BtnVoltar;
-    JButton BtnAvancar;
     
     CRDAluno ALUNO = new CRDAluno(new ListaArray());
     PermanenciaArquivo persistencia = new PermanenciaArquivo();

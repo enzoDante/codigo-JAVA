@@ -8,9 +8,7 @@ public class AppSWING extends JFrame{
         setTitle("Sistema cadastro de alunos");
 
         Container tela = getContentPane();
-        // tela.setLayout(null);
-
-        // comp.formCadastro(tela);
+        
         comp.inicializarArquivo();
         comp.renderizar(tela, new FormMenu(tela, comp));
 
@@ -23,7 +21,5 @@ public class AppSWING extends JFrame{
 
     public static void main(String args[]){
         new AppSWING();
-        // AppSWING app = new AppSWING();
-        // app.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
