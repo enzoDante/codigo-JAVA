@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -54,17 +55,19 @@ public class Campo {
         }
     }
 
-    public void gerarBombas(){
+    public void gerarBombas(int a, int b){
         int bombasCriadas = 0;
         Random rand = new Random();
         while (bombasCriadas < totalBomba) {
             int i = rand.nextInt(totalBomba);
             int j = rand.nextInt(totalBomba);
-            Celula cel = gerar[i][j];
-            if (!cel.bomba) {
-                cel.bomba = true;
-                atualizarVizinhos(cel);
-                bombasCriadas++;
+            if(i != a || j != b){
+                Celula cel = gerar[i][j];
+                if (!cel.bomba) {
+                    cel.bomba = true;
+                    atualizarVizinhos(cel);
+                    bombasCriadas++;
+                }
             }
         }
     }
@@ -77,15 +80,20 @@ public class Campo {
         }
     }
 
+
+
+
     public void limparCelula(Celula cel) {
-        if (cel == null || cel.revelado || cel.bomba) return;
+        if (cel == null || cel.revelado) return;  // || cel.bomba
 
         cel.revelado = true;
 
+        int revelarCampos = SortearNumero.sortearComPeso(0, 10, 1.5);
+        //limparVizinhasVazias(cel);
         if (cel.bombasVizinho == 0) {
             limparVizinhasVazias(cel);
         } else {
-            limparAoRedor(cel);
+            // limparAoRedor(cel);
         }
     }
 
@@ -111,10 +119,32 @@ public class Campo {
     }
 
     public List<Celula> getVizinhos(Celula cel) {
-        return List.of(
-            cel.cima, cel.baixo, cel.direita, cel.esquerda,
-            cel.CE, cel.CD, cel.BE, cel.BD
-        );
+        // return List.of(
+        //     cel.cima, cel.baixo, cel.direita, cel.esquerda,
+        //     cel.CE, cel.CD, cel.BE, cel.BD
+        // );
+        List<Celula> vizinhos = new ArrayList<>();
+        if (cel.cima != null)     vizinhos.add(cel.cima);
+        if (cel.baixo != null)    vizinhos.add(cel.baixo);
+        if (cel.esquerda != null) vizinhos.add(cel.esquerda);
+        if (cel.direita != null)  vizinhos.add(cel.direita);
+        if (cel.CE != null)       vizinhos.add(cel.CE);
+        if (cel.CD != null)       vizinhos.add(cel.CD);
+        if (cel.BE != null)       vizinhos.add(cel.BE);
+        if (cel.BD != null)       vizinhos.add(cel.BD);
+        return vizinhos;
+    }
+
+    public boolean verificarVitoria() {
+        for (int i = 0; i < totalBomba; i++) {
+            for (int j = 0; j < totalBomba; j++) {
+                Celula c = gerar[i][j];
+                if (!c.bomba && !c.revelado) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
 }

@@ -3,6 +3,8 @@ import javax.swing.*;
 
 public class ComponenteSWING {
     private Container tela;
+    private JLabel contadorBandeiras;
+    private int bandeirasRestantes;
     private int dimensao;
     public Jogo campoMinado;
     public JButton[][] btns;
@@ -17,12 +19,23 @@ public class ComponenteSWING {
 
     public void cabeca(){
         JPanel cab = new JPanel();
+        cab.setLayout(new FlowLayout(FlowLayout.LEFT));
+        bandeirasRestantes = campoMinado.totalBomba;
+
+        contadorBandeiras = new JLabel("F " + bandeirasRestantes);
+        cab.add(contadorBandeiras);
+        
+        tela.add(cab, BorderLayout.NORTH);
         
     }
 
     public void iniciarCampo(){
+        JPanel gridWrapper = new JPanel();
+        gridWrapper.setLayout(new GridBagLayout());
         JPanel panel = new JPanel(new GridLayout(this.dimensao, this.dimensao));
-        //panel.setPreferredSize(new Dimension(200, 200));
+        int btnSize = 35;
+        panel.setPreferredSize(new Dimension(btnSize * this.dimensao, btnSize * this.dimensao));
+        
 
         for(int i = 0; i < this.dimensao; i++){
             for(int j = 0; j < this.dimensao; j++){
@@ -30,44 +43,44 @@ public class ComponenteSWING {
                 Celula atual = campoMinado.gerar[i][j];
                 
                 btns[i][j] = new JButton(atual.icone);
-                btns[i][j].setPreferredSize(new Dimension(40, 40));
+                btns[i][j].setPreferredSize(new Dimension(btnSize, btnSize));
                 btns[i][j].setMargin(new Insets(0, 0, 0, 0));
                 
                 int aaa = i;
                 int bbb = j;
 
-                 btns[i][j].addActionListener(e -> {
-                    System.out.println("Clique em: (" + aaa + ", " + bbb + ")");
-                    if(!campoMinado.verificarInicio()){
-                        campoMinado.setInicio();
+                btns[i][j].addMouseListener(new java.awt.event.MouseAdapter() {
+                    @Override
+                    public void mousePressed(java.awt.event.MouseEvent e){
+                        if(SwingUtilities.isRightMouseButton(e)){
+                            toggleBandeira(aaa, bbb);
+                        }
+                        else if(SwingUtilities.isLeftMouseButton(e)){
+                            if(campoMinado.gerar[aaa][bbb].bandeira) return; // não permite clique esquerdo caso tenha bandeira
 
-                        campoMinado.gerarBombas();
+                            if(!campoMinado.verificarInicio()){
+                                campoMinado.setInicio();
+                                campoMinado.gerarBombas(aaa, bbb);
+                            }
+
+                            Celula clicada = campoMinado.gerar[aaa][bbb];
+                            if(clicada.revelado) return;
+                            if(clicada.bomba){
+                                clicada.revelado = true;
+                                btns[aaa][bbb].setText("B");
+                                JOptionPane.showMessageDialog(null, "Você perdeu");
+                                voltarMenu();
+                                return;
+                            }else
+                                campoMinado.limparCelula(clicada);
+                            
+                            atualizarCampoVisual();
+                            if(campoMinado.verificarVitoria()){
+                                JOptionPane.showMessageDialog(null, "Você venceu!");
+                                voltarMenu();
+                            }
+                        }
                     }
-
-                    Celula clicada = campoMinado.gerar[aaa][bbb];
-                    if(clicada.revelado || clicada.bomba) return;
-                    //clicada.revelado = true;
-
-
-
-                    // if(clicada.bomba){
-                    //     System.out.println("bomba\n");
-                    //     btn.setText("B");
-                    // }else if(clicada.bombasVizinho > 0){
-                    //     btn.setText(String.valueOf(clicada.bombasVizinho));
-                    //     // aqui chama limparvizinhasvazias
-
-
-                    // }else{
-                    //     btn.setText("");
-                    //     //aqui chama limparvizinhasvazias
-                    // }
-                    campoMinado.limparCelula(atual);
-                    
-                    atualizarCampoVisual();
-                    // Aqui você pode ligar com sua estrutura de dados Cell
-                    // btn.setText("X"); // Apenas exemplo
-                    btns[aaa][bbb].setEnabled(false);
                 });
 
 
@@ -76,31 +89,59 @@ public class ComponenteSWING {
 
             }
         }
+        gridWrapper.add(panel);
+        tela.add(gridWrapper, BorderLayout.CENTER);
+    }
 
-        tela.add(panel);
+    private void voltarMenu() {
+        tela.removeAll();
+        tela.revalidate();
+        tela.repaint();
+
+        Menu menu = new Menu(tela); // você precisa ter essa classe criada
+    }
+
+    public void toggleBandeira(int a, int b){
+        Celula cel = campoMinado.gerar[a][b];
+        JButton btn = btns[a][b];
+
+        if(cel.revelado) return;
+        if(!cel.bandeira){ // && bandeirasRestantes > 0
+            cel.bandeira = true;
+            btn.setText("F");
+            btn.setEnabled(false);
+            bandeirasRestantes--;
+
+        }else if(cel.bandeira){
+            cel.bandeira = false;
+            btn.setText("");
+            btn.setEnabled(true);
+            bandeirasRestantes++;
+        }
+
+        contadorBandeiras.setText("F "+bandeirasRestantes);
     }
 
     public void atualizarCampoVisual() {
-        Component[] components = tela.getComponents();
-        for (Component comp : components) {
-            if (comp instanceof JPanel panel) {
-                Component[] botoes = panel.getComponents();
-                for (int i = 0; i < dimensao; i++) {
-                    for (int j = 0; j < dimensao; j++) {
-                        Celula cel = campoMinado.gerar[i][j];
-                        JButton btn = (JButton) botoes[i * dimensao + j];
+        for(int i = 0; i < this.dimensao; i++){
+            for(int j = 0; j < this.dimensao; j++){
+                Celula cel = campoMinado.gerar[i][j];
+                JButton btn = btns[i][j];
 
-                        if (cel.revelado) {
-                            if (cel.bomba) {
-                                btn.setText("💣");
-                            } else if (cel.bombasVizinho > 0) {
-                                btn.setText(String.valueOf(cel.bombasVizinho));
-                            } else {
-                                btn.setText("");
-                            }
-                            btn.setEnabled(false);
-                        }
-                    }
+                if(cel.revelado){
+                    if(cel.bomba){
+                        btn.setText("B");
+                    }else if(cel.bombasVizinho > 0)
+                        btn.setText(String.valueOf(cel.bombasVizinho));
+                    else
+                        btn.setText("");
+                    btn.setEnabled(false);
+                }else if(cel.bandeira){
+                    btn.setText("F");
+                    btn.setEnabled(false);
+                }else{
+                    btn.setText("");
+                    btn.setEnabled(true);
                 }
             }
         }
