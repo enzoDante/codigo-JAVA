@@ -4,10 +4,22 @@ import java.util.Random;
 
 public class Campo {
     public int totalBomba;
+    public int dim;
     public Celula[][] gerar;
 
     public Campo(int value){
-        this.totalBomba = value;
+        switch (value) {
+            case 10:
+                this.totalBomba = 10;
+                break;
+            case 16:
+                this.totalBomba = 32;
+                break;
+            case 28:
+                this.totalBomba = 90;
+                break;
+        }
+        this.dim = value;
         this.gerar = new Celula[this.totalBomba][this.totalBomba];
     }
 
@@ -59,9 +71,9 @@ public class Campo {
         int bombasCriadas = 0;
         Random rand = new Random();
         while (bombasCriadas < totalBomba) {
-            int i = rand.nextInt(totalBomba);
-            int j = rand.nextInt(totalBomba);
-            if(i != a || j != b){
+            int i = rand.nextInt(this.dim);
+            int j = rand.nextInt(this.dim);
+            if(i != a || j != b ){
                 Celula cel = gerar[i][j];
                 if (!cel.bomba) {
                     cel.bomba = true;
@@ -88,7 +100,6 @@ public class Campo {
 
         cel.revelado = true;
 
-        int revelarCampos = SortearNumero.sortearComPeso(0, 10, 1.5);
         //limparVizinhasVazias(cel);
         if (cel.bombasVizinho == 0) {
             limparVizinhasVazias(cel);

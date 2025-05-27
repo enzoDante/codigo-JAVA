@@ -30,10 +30,10 @@ public class ComponenteSWING {
     }
 
     public void iniciarCampo(){
-        JPanel gridWrapper = new JPanel();
-        gridWrapper.setLayout(new GridBagLayout());
+        // JPanel gridWrapper = new JPanel();
+        // gridWrapper.setLayout(new GridBagLayout());
         JPanel panel = new JPanel(new GridLayout(this.dimensao, this.dimensao));
-        int btnSize = 35;
+        int btnSize = 35; // 35
         panel.setPreferredSize(new Dimension(btnSize * this.dimensao, btnSize * this.dimensao));
         
 
@@ -53,6 +53,8 @@ public class ComponenteSWING {
                     @Override
                     public void mousePressed(java.awt.event.MouseEvent e){
                         if(SwingUtilities.isRightMouseButton(e)){
+                            
+                            
                             toggleBandeira(aaa, bbb);
                         }
                         else if(SwingUtilities.isLeftMouseButton(e)){
@@ -89,8 +91,9 @@ public class ComponenteSWING {
 
             }
         }
-        gridWrapper.add(panel);
-        tela.add(gridWrapper, BorderLayout.CENTER);
+        // gridWrapper.add(panel);
+        // tela.add(gridWrapper, BorderLayout.CENTER);
+        tela.add(panel);
     }
 
     private void voltarMenu() {
@@ -108,13 +111,18 @@ public class ComponenteSWING {
         if(cel.revelado) return;
         if(!cel.bandeira){ // && bandeirasRestantes > 0
             cel.bandeira = true;
-            btn.setText("F");
+            // btn.setText("F");
+            ImageIcon icone = new ImageIcon("./imagens/flag2.png");
+            icone = new ImageIcon(icone.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH));
+            btn.setIcon(icone);
+            btn.setDisabledIcon(icone);
             btn.setEnabled(false);
             bandeirasRestantes--;
 
         }else if(cel.bandeira){
             cel.bandeira = false;
-            btn.setText("");
+            // btn.setText("");
+            btn.setIcon(null);
             btn.setEnabled(true);
             bandeirasRestantes++;
         }
@@ -137,10 +145,15 @@ public class ComponenteSWING {
                         btn.setText("");
                     btn.setEnabled(false);
                 }else if(cel.bandeira){
-                    btn.setText("F");
+                    // btn.setText("F");
+                    ImageIcon icone = new ImageIcon("./imagens/flag2.png");
+                    icone = new ImageIcon(icone.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH));
+                    btn.setIcon(icone);
+                    btn.setDisabledIcon(icone);
                     btn.setEnabled(false);
                 }else{
                     btn.setText("");
+                    btn.setIcon(null);
                     btn.setEnabled(true);
                 }
             }

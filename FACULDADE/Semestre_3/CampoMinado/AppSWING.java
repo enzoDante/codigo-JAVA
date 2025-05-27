@@ -1,6 +1,5 @@
 
 import java.awt.*;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -18,8 +17,9 @@ public class AppSWING extends JFrame{
 
         layout = new CardLayout();
         cards = new JPanel(layout);
-        criarMenu();
+        // criarMenu();
         getContentPane().add(cards);
+        Menu menu = new Menu(cards);
         
         // Container tela = getContentPane();
         // int tamanho = 10;
